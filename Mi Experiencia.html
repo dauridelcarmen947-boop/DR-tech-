@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencia y Perfil | DR Tech Solutions</title>
+    <!-- Conectamos con el CSS principal unificado -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        
+        /* ==========================================
+           EFECTO DEL CURSOR Y PARTÍCULAS
+           ========================================== */
+        body {
+            overflow-x: hidden;
+        }
+        
+        .cursor-rayo {
+            width: 10px;
+            height: 10px;
+            background: #00d9ff;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-shadow: 0 0 15px #00d9ff;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        .particula {
+            width: 6px;
+            height: 6px;
+            background: #00d9ff;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-shadow: 0 0 10px #00d9ff;
+            z-index: 9998;
+            animation: desvanecer 0.6s linear forwards;
+        }
+
+        @keyframes desvanecer {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+        }
+
+        .experiencia-lista li {
+            margin: 12px 0;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+            color: #e0e0e0;
+        }
+        
+        .experiencia-lista li::before {
+            content: "✔";
+            color: #00d9ff;
+            margin-right: 10px;
+        }
+
+        .contenedor-experiencia {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <!-- Logo interactivo que redirige al inicio -->
+        <a href="index.html">
+            <img src="logo.svg" alt="DR Tech Logo" class="logo">
+        </a>
+        <h1 class="titulo-principal">Mi Experiencia Profesional</h1>
+        <p class="subtitulo">Técnico de soporte informático especializado en soluciones tecnológicas</p>
+         
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html#acerca">Perfil</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="servicios.html#planes">Planes B2B</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><a href="cita.html#agendar">Agendar Cita</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor-experiencia">
+
+        <!-- Sección de Formación -->
+        <section class="tarjeta-servicio" style="width: 100%; text-align: left; margin-bottom: 30px;">
+            <h2 style="color: #00d9ff; margin-bottom: 15px;">Formación y Especialidad</h2>
+            <p>
+                Actualmente curso la carrera de <strong>Ingeniería en Sistemas</strong> en la <strong>Universidad Dominicana O&M (Sede Central)</strong>. Mi enfoque académico se complementa con habilidades técnicas avanzadas en <strong>desarrollo de páginas web</strong> y <strong>configuración de redes básicas</strong>. Esta combinación me permite comprender y optimizar desde la infraestructura física de una red hasta el software y la presencia digital de un negocio.
+            </p>
+        </section>
+
+        <!-- Sección de Experiencia -->
+        <section class="tarjeta-servicio" style="width: 100%; text-align: left; margin-bottom: 30px;">
+            <h2 style="color: #00d9ff; margin-bottom: 15px;">Experiencia Laboral</h2>
+            <p>
+                Cuento con <strong>2 años de experiencia profesional</strong> brindando asistencia técnica, resolviendo problemas de hardware, software y optimizando redes.
+            </p>
+            <ul class="experiencia-lista" style="list-style: none; padding: 0; margin-top: 15px;">
+                <li>Diagnóstico y reparación avanzada de equipos informáticos</li>
+                <li>Instalación y configuración optimizada de sistemas operativos</li>
+                <li>Mantenimiento preventivo y correctivo de computadoras</li>
+                <li>Soporte remoto a usuarios empresariales y residenciales</li>
+                <li>Solución de problemas de conectividad y administración de redes locales</li>
+            </ul>
+        </section>
+
+        <!-- Sección de Fortalezas -->
+        <section class="tarjeta-servicio" style="width: 100%; text-align: left; margin-bottom: 30px;">
+            <h2 style="color: #00d9ff; margin-bottom: 15px;">Mis Fortalezas como Informático</h2>
+            <ul class="experiencia-lista" style="list-style: none; padding: 0;">
+                <li>Capacidad para analizar y solucionar problemas rápidamente bajo presión</li>
+                <li>Facilidad para aprender e implementar nuevas tecnologías</li>
+                <li>Comunicación clara para explicar soluciones técnicas complejas a usuarios sin conocimientos previos</li>
+                <li>Responsabilidad y compromiso absoluto con la seguridad de los datos del cliente</li>
+            </ul>
+        </section>
+
+        <!-- Sección de Llamado a la Acción -->
+        <section class="tarjeta-servicio" style="width: 100%; text-align: center; margin-bottom: 30px;">
+            <h2 style="color: #00d9ff; margin-bottom: 15px;">¿Necesitas Soporte Técnico?</h2>
+            <p style="margin-bottom: 25px;">Estoy disponible para ayudarte con problemas técnicos, mantenimiento y configuración de equipos.</p>
+            
+            <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20necesito%20soporte%20informático" target="_blank" style="margin-right: 15px;">
+                📲 Contactarme por WhatsApp
+            </a>
+            
+            <a class="boton" href="index.html" style="border: 2px solid #555; color: #fff; background: transparent;">
+                ⬅ Volver al inicio
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dauri Manuel Del Carmen | Soporte Técnico Informático</p>
+    </footer>
+
+    <script>
+        const cursor = document.createElement("div");
+        cursor.className = "cursor-rayo";
+        document.body.appendChild(cursor);
+
+        document.addEventListener("mousemove", function(e){
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+
+            for(let i=0; i<2; i++){
+                const p = document.createElement("div");
+                p.className = "particula";
+                p.style.left = (e.clientX + (Math.random() * 20 - 10)) + "px";
+                p.style.top = (e.clientY + (Math.random() * 20 - 10)) + "px";
+                document.body.appendChild(p);
+
+                setTimeout(() => {
+                    p.remove();
+                }, 600);
+            }
+        });
+        
+    </script>
+    <!-- Botones Flotantes Interactivos de Redes Sociales -->
+    <div class="redes-flotantes">
+        <a href="https://wa.me/18096682092?text=Hola,%20necesito%20soporte%20informático" target="_blank" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp">
+            💬
+        </a>
+        <a href="https://facebook.com/tu-perfil" target="_blank" class="btn-flotante btn-facebook" data-tooltip="Facebook">
+            👥
+        </a>
+        <a href="https://instagram.com/tu-perfil" target="_blank" class="btn-flotante btn-instagram" data-tooltip="Instagram">
+            📸
+        </a>
+    </div>
+</body>
+</html>

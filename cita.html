@@ -1,0 +1,159 @@
+<body>
+    <header>
+        <!-- Logo interactivo que redirige al inicio -->
+        <a href="index.html">
+            <img src="cita.svg" alt="DR Tech Logo" class="logo">
+        </a>
+        <h1 class="titulo-principal">DR Tech Solutions</h1>
+        <p class="subtitulo">Técnico de soporte informático especializado en soluciones tecnológicas</p>
+         
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html#acerca">Perfil</a></li>
+                <li><a href="Mi experiencia.html">Mi Experiencia</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<head>
+    <meta charset="UTF-8">
+    <title>DR Tech Solutions - Agendar Cita</title>
+    <!-- Vinculación de tu archivo CSS principal -->
+    <link rel="stylesheet" href="style.css"> <!-- Reemplaza 'style.css' por el nombre real de tu archivo CSS si es diferente -->
+</head>
+<!-- Sección de Agendar Cita Unificada -->
+<!-- Sección de Agendar Cita con Logo Centrado -->
+<section id="agendar" class="seccion-base">
+    
+    <!-- Contenedor alineado al medio -->
+    <div class="header-cita-centrado">
+        <h2>Agendar una Cita</h2>
+        <p>Selecciona los detalles de tu servicio y programa tu asistencia técnica de inmediato.</p>
+    </div>    
+    <!-- Contenedor con la misma clase tarjeta-servicio y estilo futurista -->
+    <div class="tarjeta-servicio" style="width: 100%; max-width: 700px; margin: 0 auto; border-color: #00d9ff; background: rgba(0, 217, 255, 0.03); text-align: left; padding: 40px; box-shadow: 0 0 20px rgba(0, 217, 255, 0.05);">
+        
+        <p style="text-align: center; color: #a0a0a0; margin-bottom: 30px; font-size: 15px;">
+            Selecciona los detalles de tu servicio y programa tu asistencia técnica de inmediato.
+        </p>
+
+        <form id="form-cita" onsubmit="enviarCitaWhatsApp(event)" style="display: flex; flex-direction: column; gap: 20px;">
+            
+            <div>
+                <label style="color: #00d9ff; display: block; margin-bottom: 8px; font-weight: bold;">Tu Nombre:</label>
+                <input type="text" id="nombre-cliente" required placeholder="Ej. Carlos Pérez" style="width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,217,255,0.3); border-radius: 8px; color: white; font-size: 16px;">
+            </div>
+
+            <div>
+                <label style="color: #00d9ff; display: block; margin-bottom: 8px; font-weight: bold;">Servicio Requerido:</label>
+                <select id="servicio-cita" required style="width: 100%; padding: 12px; background: rgba(0,0,0,0.8); border: 1px solid rgba(0,217,255,0.3); border-radius: 8px; color: white; font-size: 16px;">
+                    <option value="" disabled selected>Selecciona un servicio...</option>
+                    <option value="Mantenimiento de Computadora">Mantenimiento de Equipos</option>
+                    <option value="Formateo y Sistema Operativo">Formateo / Sistema Operativo</option>
+                    <option value="Instalación de Juegos">Instalación de Juegos (Retro/Modernos)</option>
+                    <option value="Configuración de Redes e Impresoras">Configuración de Redes e Impresoras</option>
+                    <option value="Asesoramiento Técnico / Web">Asesoramiento Técnico / Web</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 240px;">
+                    <label style="color: #00d9ff; display: block; margin-bottom: 8px; font-weight: bold;">Fecha Preferida:</label>
+                    <input type="date" id="fecha-cita" required style="width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,217,255,0.3); border-radius: 8px; color: white; font-size: 16px;">
+                </div>
+                <div style="flex: 1; min-width: 240px;">
+                    <label style="color: #00d9ff; display: block; margin-bottom: 8px; font-weight: bold;">Hora Preferida:</label>
+                    <input type="time" id="hora-cita" required style="width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,217,255,0.3); border-radius: 8px; color: white; font-size: 16px;">
+                </div>
+            </div>
+
+            <button type="submit" class="boton whatsapp" style="width: 100%; border: none; cursor: pointer; margin-top: 10px; font-size: 16px; background: #00d9ff; color: #000; font-weight: bold; padding: 14px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,217,255,0.4); transition: 0.3s;">
+                📅 Confirmar y Enviar Cita por WhatsApp
+            </button>
+        </form>
+    </div>
+</section>
+
+<script>
+function enviarCitaWhatsApp(event) {
+    event.preventDefault();
+    
+    const nombre = document.getElementById('nombre-cliente').value;
+    const servicio = document.getElementById('servicio-cita').value;
+    const fecha = document.getElementById('fecha-cita').value;
+    const hora = document.getElementById('hora-cita').value;
+    
+    const telefono = "18096682092";
+    
+    const mensaje = `Hola, DR Tech Solutions. Me gustaría agendar una cita.%0A%0A` +
+                    `👤 *Nombre:* ${nombre}%0A` +
+                    `🛠️ *Servicio:* ${servicio}%0A` +
+                    `📅 *Fecha:* ${fecha}%0A` +
+                    `⏰ *Hora:* ${hora}`;
+    
+    window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+}
+</script>
+  <script>
+        // Crear elementos del cursor dinámicamente
+        const cursor = document.createElement("div");
+        cursor.className = "cursor-rayo";
+        document.body.appendChild(cursor);
+
+        // Estilos rápidos inyectados por seguridad para el cursor
+        cursor.style.cssText = `
+            width: 10px;
+            height: 10px;
+            background: #00d9ff;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-shadow: 0 0 15px #00d9ff;
+            z-index: 99999;
+            transition: transform 0.05s ease;
+        `;
+
+        document.addEventListener("mousemove", function(e){
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+
+            // Generar partículas de estela
+            if(Math.random() > 0.3) {
+                const p = document.createElement("div");
+                p.style.cssText = `
+                    width: 6px;
+                    height: 6px;
+                    background: #00d9ff;
+                    border-radius: 50%;
+                    position: fixed;
+                    left: ${e.clientX}px;
+                    top: ${e.clientY}px;
+                    transform: translate(-50%, -50%);
+                    pointer-events: none;
+                    box-shadow: 0 0 8px #00d9ff;
+                    z-index: 99998;
+                    animation: desvanecerCursor 0.5s linear forwards;
+                `;
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 500);
+            }
+        });
+    </script>
+
+<!-- Botones Flotantes Interactivos de Redes Sociales -->
+    <div class="redes-flotantes">
+        <a href="https://wa.me/18096682092?text=Hola,%20necesito%20soporte%20informático" target="_blank" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp">
+            💬
+        </a>
+        <a href="https://facebook.com/tu-perfil" target="_blank" class="btn-flotante btn-facebook" data-tooltip="Facebook">
+            👥
+        </a>
+        <a href="https://instagram.com/tu-perfil" target="_blank" class="btn-flotante btn-instagram" data-tooltip="Instagram">
+            📸
+        </a>
+    </div>
+    
+    
