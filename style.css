@@ -479,3 +479,61 @@ footer {
     font-size: 15px;
     max-width: 500px;
 }
+
+/* ==========================================
+   EXTENSIÓN RESPONSIVE GLOBAL ADICIONAL
+   ========================================== */
+@media (max-width: 768px) {
+    main {
+        padding: 20px 10px;
+    }
+
+    .seccion-base h2 {
+        font-size: 1.8em;
+    }
+
+    .faq-seccion {
+        padding: 20px;
+    }
+
+    .redes-flotantes {
+        bottom: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+
+    .btn-flotante {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .btn-flotante::before {
+        display: none; /* Oculta tooltips en pantallas táctiles pequeñas para evitar desbordes */
+    }
+
+    .header-cita-centrado p {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-principal {
+        font-size: 1.6em;
+        letter-spacing: 1px;
+    }
+
+    .subtitulo {
+        font-size: 1em;
+    }
+
+    .tarjeta-servicio {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .plan-card {
+        min-width: 100%;
+    }
+}
