@@ -2,7 +2,7 @@
    CONFIGURACIÓN GENERAL Y VARIABLES DE COLOR
    ========================================== */
 :root {
-    --bg-gradient: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.85)), url('fondo.jpg');
+    --bg-gradient: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.85)), url('blanco.jpg');
     --bg-color: #0d0d0d;
     --text-color: #e0e0e0;
     --card-bg: rgba(255, 255, 255, 0.05);

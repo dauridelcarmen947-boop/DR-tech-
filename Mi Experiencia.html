@@ -5,9 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiencia y Perfil | DR Tech Solutions</title>
-    <!-- Conectamos con el CSS principal unificado -->
-    <link rel="stylesheet" href="style.css">
+    <title>DR Tech Solutions</title>
+    
+    <!-- El ID "estilo-principal" permite que JavaScript identifique qué archivo cambiar -->
+    <link id="estilo-principal" rel="stylesheet" href="light-style.css">
+</head>
 
     <style>
         
@@ -73,24 +75,30 @@
 
 <body>
 
-    <header>
-        <!-- Logo interactivo que redirige al inicio -->
-        <a href="index.html">
-            <img src="logo.svg" alt="DR Tech Logo" class="logo">
-        </a>
-        <h1 class="titulo-principal">Mi Experiencia Profesional</h1>
-        <p class="subtitulo">Técnico de soporte informático especializado en soluciones tecnológicas</p>
-         
-        <nav>
-            <ul class="menu">
-                <li><a href="index.html#acerca">Perfil</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="servicios.html#planes">Planes B2B</a></li>
-                <li><a href="index.html#faq">FAQ</a></li>
-                <li><a href="cita.html#agendar">Agendar Cita</a></li>
-            </ul>
-        </nav>
-    </header>
+   <header>
+    <!-- Logo normal en la principal -->
+    <a href="index.html">
+        <img src="logo.svg" alt="DR Tech Logo" class="logo">
+    </a>
+    <h1 class="titulo-principal">DR Tech Solutions</h1>
+    <p class="subtitulo">Técnico de soporte informático especializado en soluciones tecnológicas</p>
+     
+    <nav>
+        <!-- Botón de las 3 líneas para móviles -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html#acerca">Perfil</a></li>
+            <li><a href="Mi experiencia.html">Mi Experiencia</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="cita.html#agendar">Agendar Cita</a></li>
+        </ul>
+    </nav>
+</header>
 
     <main class="contenedor-experiencia">
 
@@ -172,16 +180,66 @@
         
     </script>
     <!-- Botones Flotantes Interactivos de Redes Sociales -->
-    <div class="redes-flotantes">
-        <a href="https://wa.me/18096682092?text=Hola,%20necesito%20soporte%20informático" target="_blank" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp">
-            💬
-        </a>
-        <a href="https://facebook.com/tu-perfil" target="_blank" class="btn-flotante btn-facebook" data-tooltip="Facebook">
-            👥
-        </a>
-        <a href="https://instagram.com/tu-perfil" target="_blank" class="btn-flotante btn-instagram" data-tooltip="Instagram">
-            📸
-        </a>
-    </div>
+   <!-- Botones Flotantes Interactivos de Redes Sociales + Cambio de Modo -->
+<div class="redes-flotantes">
+    <button onclick="toggleModo()" class="btn-flotante btn-modo" data-tooltip="Cambiar Modo Claro/Oscuro">
+        🌓
+    </button>
+    <a href="https://wa.me/18096682092?text=Hola,%20necesito%20soporte%20informático" target="_blank" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp">
+        💬
+    </a>
+    <a href="https://facebook.com/tu-perfil" target="_blank" class="btn-flotante btn-facebook" data-tooltip="Facebook">
+        👥
+    </a>
+    <a href="https://instagram.com/tu-perfil" target="_blank" class="btn-flotante btn-instagram" data-tooltip="Instagram">
+        📸
+    </a>
+</div>
+<script>
+    // Control del Menú Hamburguesa
+    const menuToggle = document.getElementById('mobile-menu');
+    const menuNav = document.querySelector('.menu');
+
+    if (menuToggle && menuNav) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            menuNav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                menuNav.classList.remove('active');
+            });
+        });
+    }
+
+    // Control de Estilo Individual (Modo Blanco vs Modo Oscuro)
+    function toggleModo() {
+        let linkCss = document.getElementById('estilo-principal');
+        
+        if (!linkCss) return;
+
+        // Si actualmente usa el estilo oscuro, pasa al blanco; de lo contrario, regresa al oscuro
+        if (linkCss.getAttribute('href') === 'style.css') {
+            linkCss.setAttribute('href', 'light-style.css');
+            localStorage.setItem('modo', 'claro');
+        } else {
+            linkCss.setAttribute('href', 'style.css');
+            localStorage.setItem('modo', 'oscuro');
+        }
+    }
+
+    // Aplicar la preferencia guardada al cargar cualquier página
+    window.addEventListener('DOMContentLoaded', () => {
+        let modoGuardado = localStorage.getItem('modo');
+        let linkCss = document.getElementById('estilo-principal');
+        
+        if (modoGuardado === 'claro' && linkCss) {
+            linkCss.setAttribute('href', 'light-style.css');
+        }
+    });
+</script>
+
 </body>
 </html>
