@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - DR Tech Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css"> <!-- Asegúrate de tener este archivo css -->
+</head>
+<body>
+
+    <!-- ================= CONTENEDOR DE AUTENTICACIÓN ================= -->
+    <div id="auth-container">
+        <div id="login-box" class="glass auth-box fade-in">
+            <h2>Bienvenido</h2>
+            <p>Panel de Administración - DR Tech Solutions</p>
+            
+            <div id="login-alert" class="alert" style="display:none; color: #ff6b6b; margin-bottom: 10px;">Credenciales incorrectas.</div>
+
+            <div class="input-group">
+                <label>Usuario</label>
+                <input type="text" id="username" placeholder="admin">
+            </div>
+            <div class="input-group">
+                <label>Contraseña</label>
+                <input type="password" id="password" placeholder="1234">
+            </div>
+            <button class="btn" onclick="login()">Ingresar al Panel</button>
+        </div>
+    </div>
+
+    <!-- ================= CONTENEDOR DEL DASHBOARD ================= -->
+    <div id="app-container" style="display: none;">
+        <div class="dashboard" style="display: flex; height: 100vh;">
+            
+            <!-- MENU LATERAL -->
+            <div class="sidebar glass" style="width: 260px; padding: 20px; display: flex; flex-direction: column;">
+                <h3 style="color: #00d9ff; margin-bottom: 30px;">Admin Panel<br><span style="font-size: 14px; color: #fff;">DR Tech Solutions</span></h3>
+                <div class="nav-item active" onclick="switchTab('tab-monitor', this)" style="cursor:pointer; padding: 10px; margin-bottom: 10px;">📊 Monitoreo</div>
+                <div class="nav-item" onclick="switchTab('tab-editor', this)" style="cursor:pointer; padding: 10px; margin-bottom: 10px;">💻 Editor Web</div>
+                <div class="nav-item" onclick="switchTab('tab-settings', this)" style="cursor:pointer; padding: 10px; margin-bottom: 10px;">🔑 Ajustes</div>
+                <div class="nav-item" onclick="logout()" style="cursor:pointer; padding: 10px; margin-top: auto; color: #fca5a5;">🚪 Cerrar Sesión</div>
+                <a href="/index.html" style="text-decoration: none; color: #00d9ff; margin-top: 15px; text-align: center; font-size: 14px;">⬅ Volver a la Web</a>
+            </div>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <div class="main-content" style="flex: 1; padding: 40px; overflow-y: auto; background: #0d0d0d;">
+                
+                <!-- PESTAÑA: MONITOREO -->
+                <div id="tab-monitor" class="fade-in">
+                    <div class="header" style="margin-bottom: 30px;">
+                        <h2>Monitoreo en Vivo</h2>
+                        <p>Selecciona la página que deseas modificar directamente en el servidor.</p>
+                    </div>
+                    
+                    <div class="glass page-list" style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 10px;">
+                        <h3 style="margin-bottom: 20px; color: #00d9ff;">Tus Páginas del Sitio</h3>
+                        
+                        <div class="page-item" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <div>
+                                <strong>index.html</strong>
+                                <div style="font-size: 12px; color: #a0a0a0;">/public/index.html</div>
+                            </div>
+                            <button class="btn" onclick="goToEdit('index.html')">Editar</button>
+                        </div>
+
+                        <div class="page-item" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-top: 10px;">
+                            <div>
+                                <strong>cita.html</strong>
+                                <div style="font-size: 12px; color: #a0a0a0;">/public/cita.html</div>
+                            </div>
+                            <button class="btn" onclick="goToEdit('cita.html')">Editar</button>
+                        </div>
+
+                        <div class="page-item" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; margin-top: 10px;">
+                            <div>
+                                <strong>Mi experiencia.html</strong>
+                                <div style="font-size: 12px; color: #a0a0a0;">/public/Mi experiencia.html</div>
+                            </div>
+                            <button class="btn" onclick="goToEdit('Mi experiencia.html')">Editar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA: EDITOR -->
+                <div id="tab-editor" style="display: none;">
+                    <div class="header" style="margin-bottom: 20px;">
+                        <h2>Editor de Páginas</h2>
+                        <p id="editing-title">Selecciona una página en Monitoreo para editarla.</p>
+                    </div>
+                    <div class="glass" style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 10px;">
+                        <textarea class="textarea-code" id="html-editor" style="width: 100%; height: 400px; background: #000; color: #00d9ff; padding: 15px; font-family: monospace; border-radius: 8px; border: 1px solid #00d9ff; margin-bottom: 15px;"></textarea>
+                        <div style="display: flex; gap: 15px;">
+                            <button class="btn" style="padding: 10px 20px; background: #00d9ff; color: #000; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;" onclick="saveCode()">Guardar Cambios</button>
+                            <button class="btn outline" style="padding: 10px 20px; background: transparent; color: #fff; border: 1px solid #fff; border-radius: 5px; cursor: pointer;" onclick="switchTab('tab-monitor', document.querySelectorAll('.nav-item')[0])">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SCRIPTS DE CONEXIÓN REAL ================= -->
+    <script>
+        let archivoActual = '';
+
+        // Auto-login: Verifica si ya habías iniciado sesión antes
+        window.onload = () => {
+            if (location.protocol === 'file:') {
+                alert('Debes abrir este panel desde el servidor: http://localhost:3000/admin.html');
+                return;
+            }
+
+            if (localStorage.getItem('admin_activo') === 'true') {
+                document.getElementById('auth-container').style.display = 'none';
+                document.getElementById('app-container').style.display = 'block';
+            }
+        };
+
+        async function login() {
+            if (location.protocol === 'file:') {
+                alert('Abre la página desde http://localhost:3000/admin.html antes de iniciar sesión.');
+                return;
+            }
+
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const alertBox = document.getElementById('login-alert');
+            
+            try {
+                // Ruta relativa corregida
+                const respuesta = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: user, password: pass })
+                });
+
+                const datos = await respuesta.json();
+
+                if(datos.success) {
+                    // Guardamos la sesión activa
+                    localStorage.setItem('admin_activo', 'true');
+                    window.adminUser = user; // Guardamos usuario activo en la sesión del frontend
+
+                    document.getElementById('auth-container').style.display = 'none';
+                    document.getElementById('app-container').style.display = 'block';
+                    alertBox.style.display = 'none';
+                } else {
+                    alertBox.style.display = 'block'; // Muestra error si las credenciales fallan
+                    alertBox.innerText = datos.message;
+                }
+            } catch (error) {
+                alert('Error de conexión. Abre la página con el servidor en http://localhost:3000/admin.html y asegúrate de que Node.js esté corriendo.');
+            }
+        }
+
+        function logout() {
+            // Borramos la sesión
+            localStorage.removeItem('admin_activo');
+
+            document.getElementById('app-container').style.display = 'none';
+            document.getElementById('auth-container').style.display = 'flex';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        function switchTab(tabId, element) {
+            document.getElementById('tab-monitor').style.display = 'none';
+            document.getElementById('tab-editor').style.display = 'none';
+            
+            document.getElementById(tabId).style.display = 'block';
+
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(item => item.classList.remove('active'));
+            if(element) element.classList.add('active');
+        }
+
+        async function goToEdit(pageName) {
+            switchTab('tab-editor', document.querySelectorAll('.nav-item')[1]);
+            document.getElementById('editing-title').innerHTML = `Editando archivo real: <strong>${pageName}</strong>`;
+            document.getElementById('html-editor').value = "Cargando código desde el servidor...";
+            archivoActual = pageName;
+
+            try {
+                // Ruta relativa corregida para cargar el archivo
+                const respuesta = await fetch(`/api/editar/${pageName}`);
+                const datos = await respuesta.json();
+
+                if(datos.success) {
+                    document.getElementById('html-editor').value = datos.contenido;
+                } else {
+                    document.getElementById('html-editor').value = "Error: " + datos.message;
+                }
+            } catch (error) {
+                document.getElementById('html-editor').value = "Error de conexión con el servidor backend.";
+            }
+        }
+
+        async function saveCode() {
+            const codigoModificado = document.getElementById('html-editor').value;
+
+            try {
+                // Ruta relativa corregida para guardar
+                const respuesta = await fetch(`/api/guardar/${archivoActual}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ codigoHtml: codigoModificado })
+                });
+
+                const datos = await respuesta.json();
+
+                if(datos.success) {
+                    alert("✅ " + datos.message);
+                } else {
+                    alert("❌ Error al guardar: " + datos.message);
+                }
+            } catch (error) {
+                alert("Error de conexión al intentar guardar en el servidor.");
+            }
+        }
+
+        // ================== AJUSTES: CAMBIAR / RECUPERAR CONTRASEÑA ==================
+        async function changePassword() {
+            const current = document.getElementById('current-password').value;
+            const next = document.getElementById('new-password').value;
+            const confirm = document.getElementById('confirm-new-password').value;
+            const msg = document.getElementById('change-pass-msg');
+            msg.style.display = 'none';
+
+            if (!window.adminUser) {
+                msg.style.display = 'block'; msg.innerText = 'Necesitas iniciar sesión primero.'; return;
+            }
+            if (!current || !next) { msg.style.display = 'block'; msg.innerText = 'Completa los campos.'; return; }
+            if (next !== confirm) { msg.style.display = 'block'; msg.innerText = 'Las contraseñas no coinciden.'; return; }
+
+            try {
+                const res = await fetch('/api/change-password', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: window.adminUser, currentPassword: current, newPassword: next })
+                });
+                const data = await res.json();
+                msg.style.display = 'block'; msg.innerText = data.message;
+            } catch (e) {
+                msg.style.display = 'block'; msg.innerText = 'Error de conexión al cambiar contraseña.';
+            }
+        }
+
+        async function requestReset() {
+            const email = document.getElementById('reset-email').value;
+            const msg = document.getElementById('reset-msg');
+            msg.style.display = 'none';
+            if (!email) { msg.style.display = 'block'; msg.innerText = 'Ingresa un correo.'; return; }
+            try {
+                const res = await fetch('/api/request-reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+                const data = await res.json();
+                msg.style.display = 'block'; msg.innerText = data.message || 'Si el correo existe, recibirás instrucciones.';
+            } catch (e) {
+                msg.style.display = 'block'; msg.innerText = 'Error de conexión al solicitar recuperación.';
+            }
+        }
+
+        async function resetPassword() {
+            const token = document.getElementById('reset-token').value;
+            const np = document.getElementById('reset-new-password').value;
+            const cp = document.getElementById('reset-confirm-password').value;
+            const msg = document.getElementById('reset-msg');
+            msg.style.display = 'none';
+            if (!token || !np) { msg.style.display = 'block'; msg.innerText = 'Completa todos los campos.'; return; }
+            if (np !== cp) { msg.style.display = 'block'; msg.innerText = 'Las contraseñas no coinciden.'; return; }
+            try {
+                const res = await fetch('/api/reset-password', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, newPassword: np }) });
+                const data = await res.json();
+                msg.style.display = 'block'; msg.innerText = data.message || 'Operación completada.';
+            } catch (e) {
+                msg.style.display = 'block'; msg.innerText = 'Error de conexión al restablecer contraseña.';
+            }
+        }
+    </script>
+</body>
+</html>

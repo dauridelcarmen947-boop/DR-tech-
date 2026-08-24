@@ -1,0 +1,6 @@
+{
+  "username": "admin",
+  "email": "you@example.com",
+  "salt": "91d21f0fbdb3206d85cbce8d85a9463a",
+  "hash": "cae37363f78699b12b0fd3d5c1a87250929f607381a69df1296152fba43ddb8ab8d7af5ef0931f089e8a26742d03c975fd7d25a12503a958badec0c04d0f8ba6"
+}

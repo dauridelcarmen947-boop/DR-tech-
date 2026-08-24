@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restablecer contraseña - DR Tech Solutions</title>
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        body{display:flex;align-items:center;justify-content:center;height:100vh;background:#071024;color:#eaf6ff;font-family:Arial,Helvetica,sans-serif}
+        .card{background:rgba(255,255,255,0.03);padding:26px;border-radius:12px;max-width:520px;width:100%;box-shadow:0 10px 30px rgba(0,0,0,0.5);backdrop-filter:blur(8px)}
+        h2{color:var(--accent-color,#00d9ff);margin-bottom:6px}
+        p.small{color:#bfcfe0;font-size:14px}
+        input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:inherit;margin-top:8px}
+        button.btn{margin-top:12px;padding:10px 14px;border-radius:8px;background:var(--accent-color,#00d9ff);border:none;color:#041722;font-weight:700;cursor:pointer}
+        .hint{font-size:13px;color:#c8dff0;margin-top:8px}
+        .msg{margin-top:12px;padding:10px;border-radius:8px;display:none}
+        .msg.success{background:rgba(34,150,60,0.12);color:#bff1c1;border:1px solid rgba(34,150,60,0.2)}
+        .msg.error{background:rgba(255,90,90,0.08);color:#ffd6d6;border:1px solid rgba(255,90,90,0.18)}
+        .link{display:inline-block;margin-top:8px;color:var(--accent-color,#00d9ff)}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Restablecer contraseña</h2>
+        <p class="small">Pega el token que recibiste por correo (o abre la página desde el enlace) y elige una nueva contraseña.</p>
+
+        <label for="token">Token de recuperación</label>
+        <input id="token" placeholder="Token (ej: 3ab8f...)" autocomplete="off">
+
+        <label for="newPass">Nueva contraseña</label>
+        <input id="newPass" type="password" placeholder="Escribe la nueva contraseña" autocomplete="new-password">
+
+        <label for="confirmPass">Confirmar nueva contraseña</label>
+        <input id="confirmPass" type="password" placeholder="Repite la nueva contraseña" autocomplete="new-password">
+
+        <button id="btnReset" class="btn">Restablecer contraseña</button>
+
+        <div id="msg" class="msg"></div>
+
+        <p class="hint">Si no tienes el token, usa la opción "Olvidé mi contraseña" desde el panel de administración para recibir el enlace por correo.</p>
+        <a class="link" href="/admin.html">← Volver al panel admin</a>
+    </div>
+
+<script>
+    function qs(name){ return new URLSearchParams(location.search).get(name); }
+    document.addEventListener('DOMContentLoaded', ()=>{
+        const tokenInput = document.getElementById('token');
+        const t = qs('token');
+        if(t){ tokenInput.value = t; }
+
+        document.getElementById('btnReset').addEventListener('click', async ()=>{
+            const token = tokenInput.value.trim();
+            const np = document.getElementById('newPass').value;
+            const cp = document.getElementById('confirmPass').value;
+            const msg = document.getElementById('msg');
+            msg.style.display = 'none'; msg.className='msg'; msg.innerText='';
+
+            if(!token){ msg.style.display='block'; msg.classList.add('error'); msg.innerText='Se necesita el token de recuperación.'; return; }
+            if(!np || np.length < 6){ msg.style.display='block'; msg.classList.add('error'); msg.innerText='La contraseña debe tener al menos 6 caracteres.'; return; }
+            if(np !== cp){ msg.style.display='block'; msg.classList.add('error'); msg.innerText='Las contraseñas no coinciden.'; return; }
+
+            try{
+                const res = await fetch('/api/reset-password', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ token, newPassword: np }) });
+                const data = await res.json();
+                if(data.success){
+                    msg.style.display='block'; msg.classList.add('success'); msg.innerText = data.message || 'Contraseña restablecida.';
+                    const l = document.createElement('a'); l.href = '/admin.html'; l.className='link'; l.innerText=' Ir a iniciar sesión';
+                    msg.appendChild(document.createTextNode(' ')); msg.appendChild(l);
+                } else {
+                    msg.style.display='block'; msg.classList.add('error'); msg.innerText = data.message || 'Error al restablecer.';
+                }
+            }catch(e){ msg.style.display='block'; msg.classList.add('error'); msg.innerText='Error de conexión al servidor.'; }
+        });
+    });
+</script>
+</body>
+</html>

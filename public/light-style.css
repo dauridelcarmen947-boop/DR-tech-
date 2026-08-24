@@ -1,0 +1,601 @@
+/* ==========================================
+   CONFIGURACIÓN GENERAL Y VARIABLES DE COLOR
+   ========================================== */
+:root {
+    --bg-gradient: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.85)), url('blanco-optimizado.jpg');
+    --bg-color: #0d0d0d;
+    --text-color: #e0e0e0;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --accent-color: #00d9ff;
+    --header-bg: linear-gradient(180deg, rgba(0,217,255,0.1) 0%, rgba(13,13,13,1) 100%);
+    --footer-bg: #050505;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cursor-rayo {
+    will-change: left, top, transform;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.1s ease;
+}
+
+body {
+    position: relative;
+    background-image: var(--bg-gradient);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.background-animated::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 15% 20%, rgba(15,111,255,0.15), transparent 22%), radial-gradient(circle at 85% 25%, rgba(116,166,255,0.12), transparent 20%), radial-gradient(circle at 50% 75%, rgba(40,130,255,0.14), transparent 30%);
+    animation: pulseBackground 10s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: -2;
+}
+
+@keyframes pulseBackground {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.08); opacity: 1; }
+}
+
+/* ==========================================
+   CABECERA Y LOGO DINÁMICO
+   ========================================== */
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: var(--header-bg);
+    border-bottom: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.logo {
+    width: 250px;
+    display: block;
+    margin: 0 auto 30px;
+    filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.5)); 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    animation: flotar 4s ease-in-out infinite; 
+    cursor: pointer;
+}
+
+/* Clase para centrar o posicionar el logo en páginas secundarias */
+.logo-secundario {
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.logo:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 40px var(--accent-color)); 
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+.titulo-principal {
+    color: var(--accent-color);
+    font-size: 3em;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 1.2em;
+    color: #a0a0a0;
+}
+
+/* ==========================================
+   MENÚ DE NAVEGACIÓN Y BOTÓN HAMBURGUESA
+   ========================================== */
+nav {
+    margin-top: 30px;
+    position: relative;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.menu li a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+.menu li a:hover::after {
+    width: 100%;
+}
+
+.menu li a:hover {
+    border-color: var(--accent-color);
+    background: rgba(0, 217, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+    letter-spacing: 0.5px;
+}
+
+/* Botón Hamburguesa (3 Líneas) por defecto oculto en escritorio */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    position: absolute;
+    top: -45px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--accent-color);
+    transition: 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Animación de equis (X) para el menú activo */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ==========================================
+   ESTRUCTURA DE LAS SECCIONES Y TARJETAS
+   ========================================== */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.seccion-base {
+    margin-bottom: 80px;
+    padding-top: 40px;
+}
+
+.seccion-base h2 {
+    color: var(--text-color);
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.contenedor-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tarjeta-servicio {
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.tarjeta-servicio:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 20px rgba(0, 217, 255, 0.2);
+}
+
+.tarjeta-servicio h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+/* ==========================================
+   PLANES DE SOPORTE MENSUAL B2B
+   ========================================== */
+.contenedor-planes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.plan-card {
+    flex: 1;
+    min-width: 280px;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    text-align: center;
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+}
+
+.plan-card h3 {
+    color: var(--text-color);
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.plan-card .precio {
+    color: var(--accent-color);
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.lista-plan {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.lista-plan li {
+    margin: 12px 0;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+    color: var(--text-color);
+}
+
+.plan-card.destacado {
+    border: 2px solid var(--accent-color);
+    background: rgba(0, 217, 255, 0.05);
+    position: relative;
+}
+
+.plan-card.destacado::before {
+    content: "MÁS POPULAR";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-color);
+    color: black;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+/* Resaltar todos los botones y acciones principales */
+button,
+a,
+input[type="submit"],
+input[type="button"],
+.btn,
+.boton {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    will-change: transform;
+}
+
+button:hover,
+button:focus-visible,
+a:hover,
+a:focus-visible,
+input[type="submit"]:hover,
+input[type="submit"]:focus-visible,
+input[type="button"]:hover,
+input[type="button"]:focus-visible,
+.btn:hover,
+.btn:focus-visible,
+.boton:hover,
+.boton:focus-visible {
+    transform: translateY(-2px) scale(1.03);
+    filter: brightness(1.08);
+    box-shadow: 0 0 18px rgba(0, 217, 255, 0.55);
+}
+
+/* Cita: botón principal más destacado */
+a.boton.cita,
+.boton.cita {
+    background: linear-gradient(135deg, #00d9ff 0%, #7ee7ff 100%);
+    color: #04151a;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.35);
+    letter-spacing: 0.4px;
+}
+
+a.boton.cita:hover,
+a.boton.cita:focus-visible,
+.boton.cita:hover,
+.boton.cita:focus-visible {
+    box-shadow: 0 14px 32px rgba(0, 217, 255, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Panel administrativo oculto */
+#enlace-admin,
+.admin-access {
+    display: none !important;
+}
+
+/* Botones */
+.boton {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--accent-color);
+    color: black;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: .3s;
+    text-align: center;
+}
+
+.boton:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+.boton.whatsapp {
+    background: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+}
+
+.boton.whatsapp:hover {
+    background: var(--accent-color);
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--footer-bg);
+    border-top: 1px solid rgba(0, 217, 255, 0.2);
+    margin-top: 50px;
+}
+
+/* ==========================================
+   BOTONES FLOTANTES DE REDES Y MODO OSCURO/CLARO
+   ========================================== */
+.redes-flotantes {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+}
+
+.btn-flotante {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-whatsapp { background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
+.btn-facebook { background: #1877f2; box-shadow: 0 0 15px rgba(24, 119, 242, 0.4); }
+.btn-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); box-shadow: 0 0 15px rgba(214, 36, 159, 0.4); }
+.btn-modo { background: #333333; color: #00d9ff; border: 2px solid #00d9ff; font-size: 20px; }
+
+.btn-flotante:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 0 25px var(--accent-color);
+}
+
+.btn-flotante::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 65px;
+    background: #0a0f1d;
+    color: #00d9ff;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    border: 1px solid rgba(0, 217, 255, 0.3);
+}
+
+.menu-social-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 4px 4px;
+    margin-top: 4px;
+    border-top: 1px solid rgba(0, 217, 255, 0.3);
+}
+
+.menu-social-actions .btn-flotante {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.redes-flotantes { display: none !important; }
+
+.btn-flotante:hover::before {
+    opacity: 1;
+}
+
+/* ==========================================
+   HEADER CITA CENTRADO
+   ========================================== */
+.header-cita-centrado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header-cita-centrado h2 {
+    color: var(--text-color);
+    font-size: 28px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.header-cita-centrado p {
+    color: #a0a0a0;
+    font-size: 15px;
+    max-width: 500px;
+}
+
+/* ==========================================
+   RESPONSIVIDAD MÓVIL TOTAL (MEDIA QUERIES)
+   ========================================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Muestra el botón de 3 líneas en celulares */
+    }
+
+    nav ul.menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        background-color: var(--bg-color);
+        box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+        padding: 25px 0;
+        border-bottom: 2px solid var(--accent-color);
+        z-index: 999;
+    }
+
+    nav ul.menu.active {
+        display: flex; /* Se despliega al pulsar las 3 líneas */
+    }
+
+    .logo { width: 180px; }
+    .titulo-principal { font-size: 2em; }
+    .contenedor-planes, .contenedor-grid { flex-direction: column; align-items: center; }
+    .tarjeta-servicio, .plan-card { width: 100%; max-width: 100%; }
+    
+    .redes-flotantes {
+        bottom: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+
+    .btn-flotante {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .btn-flotante::before {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    html { overflow-x: hidden; }
+    body { padding-left: 0; }
+    header { padding: 78px 16px 28px; }
+    .logo { width: min(62vw, 180px); }
+    .titulo-principal { font-size: clamp(1.7rem, 9vw, 2.4rem); letter-spacing: 1px; }
+    .subtitulo { font-size: 1rem; }
+    main { width: 100%; padding: 28px 14px; }
+    .seccion-base { padding-top: 20px; margin-bottom: 48px; }
+    .seccion-base h2 { font-size: clamp(1.45rem, 7vw, 2rem); }
+    .tarjeta-servicio, .plan-card { width: 100%; min-width: 0; padding: 20px; }
+    nav ul.menu.active { top: 82px; right: 14px; width: calc(100vw - 28px); }
+    .menu-toggle { top: 14px; right: 14px; }
+    .redes-flotantes { right: 12px; bottom: 12px; padding: 8px; }
+    .redes-flotantes .btn-flotante { width: 44px; height: 44px; }
+    #form-cita > div[style*="flex-wrap"] { flex-direction: column; }
+    #form-cita > div[style*="flex-wrap"] > div { min-width: 0 !important; width: 100%; }
+}

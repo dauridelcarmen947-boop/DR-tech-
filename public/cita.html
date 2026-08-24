@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DR Tech Solutions - Agendar Cita</title>
+    
+    <!-- El ID "estilo-principal" permite que JavaScript identifique qué archivo cambiar -->
+    <!-- Este es el ÚNICO enlace a CSS que debe haber para que funcione el botón -->
+    <link id="estilo-principal" rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="dark" class="background-animated">
+    <header>
+        <!-- Logo normal en la principal -->
+        <a href="index.html">
+            <img src="cita.svg" alt="DR Tech Logo" class="logo">
+        </a>
+        <h1 class="titulo-principal">DR Tech Solutions</h1>
+        <p class="subtitulo">Técnico de soporte informático especializado en soluciones tecnológicas</p>
+         
+        <nav aria-label="Menú principal">
+            <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="menu">
+                <li><a href="index.html#acerca"><span class="menu-icon">👤</span><span class="menu-text">Perfil</span></a></li>
+                <li><a href="Mi Experiencia.html"><span class="menu-icon">📜</span><span class="menu-text">Mi Experiencia</span></a></li>
+                <li><a href="servicios.html"><span class="menu-icon">🛠️</span><span class="menu-text">Servicios</span></a></li>
+                <li><a href="index.html#faq"><span class="menu-icon">❓</span><span class="menu-text">FAQ</span></a></li>
+                <li><a href="cita.html#agendar"><span class="menu-icon">📅</span><span class="menu-text">Agendar Cita</span></a></li>
+                <li class="menu-social-actions" aria-label="Accesos rápidos">
+                    <button type="button" class="btn-flotante btn-modo" onclick="toggleModo()" data-tooltip="Cambiar tema" aria-label="Cambiar tema">🌓</button>
+                    <a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp" aria-label="Contactar por WhatsApp">💬</a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-instagram" data-tooltip="Instagram" aria-label="Visitar Instagram">◎</a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-facebook" data-tooltip="Facebook" aria-label="Visitar Facebook">f</a>
+                </li>
+            </ul>
+        </nav>
+        <script src="menu.js" defer></script>
+    </header>
+
+    <!-- Sección de Agendar Cita con Logo Centrado -->
+    <section id="agendar" class="seccion-base">
+        
+        <!-- Contenedor alineado al medio -->
+        <div class="header-cita-centrado">
+            <h2>Agendar una Cita</h2>
+            <p>Selecciona los detalles de tu servicio y programa tu asistencia técnica de inmediato.</p>
+        </div>    
+        <!-- Contenedor con la misma clase tarjeta-servicio y estilo futurista -->
+        <div class="tarjeta-servicio" style="width: 100%; max-width: 700px; margin: 0 auto; border-color: #00d9ff; background: rgba(0, 217, 255, 0.03); text-align: left; padding: 40px; box-shadow: 0 0 20px rgba(0, 217, 255, 0.05);">
+            
+            <p style="text-align: center; color: #a0a0a0; margin-bottom: 30px; font-size: 15px;">
+                Selecciona los detalles de tu servicio y programa tu asistencia técnica de inmediato.
+            </p>
+
+            <form id="form-cita" onsubmit="enviarCitaWhatsApp(event)" style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <div>
+                    <label style="color: #00d9ff; display: block; margin-bottom: 8px; font-weight: bold;">Tu Nombre:</label>
+                    <input type="text" id="nombre-cliente" required placeholder="Ej. Carlos Pérez" style="width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,217,255,0.3); border-radius: 8px; color: white; font-size: 16px;">
+                </div>
+
+                <div>
+                    <label style="color: #00d9ff; display: block; margin-bottom: 8px; font-weight: bold;">Servicio Requerido:</label>
+                    <select id="servicio-cita" required style="width: 100%; padding: 12px; background: rgba(0,0,0,0.8); border: 1px solid rgba(0,217,255,0.3); border-radius: 8px; color: white; font-size: 16px;">
+                        <option value="" disabled selected>Selecciona un servicio...</option>
+                        <option value="Mantenimiento de Computadora">Mantenimiento de Equipos</option>
+                        <option value="Formateo y Sistema Operativo">Formateo / Sistema Operativo</option>
+                        <option value="Instalación de Juegos">Instalación de Juegos (Retro/Modernos)</option>
+                        <option value="Configuración de Redes e Impresoras">Configuración de Redes e Impresoras</option>
+                        <option value="Asesoramiento Técnico / Web">Asesoramiento Técnico / Web</option>
+                    </select>
+                </div>
+
+               <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+    <!-- Campo de Fecha con Icono Resaltado -->
+    <div style="flex: 1; min-width: 240px;">
+        <label style="color: var(--text-color, #00d9ff); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: bold;">
+            <span style="color: #00d9ff; background: rgba(0,217,255,0.15); border: 1px solid #00d9ff; padding: 4px 10px; border-radius: 6px; box-shadow: 0 0 12px rgba(0,217,255,0.5); font-size: 20px; text-shadow: 0 0 8px #1b8f5800;">📅</span> 
+            Fecha Preferida:
+        </label>
+        <input type="date" id="fecha-cita" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.6); border: 2px solid rgba(0,217,255,0.4); border-radius: 8px; color: white; font-size: 16px; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#00d9ff'; this.style.boxShadow='0 0 15px rgba(0,217,255,0.5)'" onblur="this.style.borderColor='rgba(0,217,255,0.4)'; this.style.boxShadow='none'">
+    </div>
+
+    <!-- Campo de Hora con Icono Resaltado -->
+    <div style="flex: 1; min-width: 240px;">
+        <label style="color: var(--text-color, #00d9ff); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: bold;">
+            <span style="color: #00d9ff; background: rgba(0,217,255,0.15); border: 1px solid #00d9ff; padding: 4px 10px; border-radius: 6px; box-shadow: 0 0 12px rgba(0,217,255,0.5); font-size: 20px; text-shadow: 0 0 8px #00d9ff;">⏰</span> 
+            Hora Preferida:
+        </label>
+        <input type="time" id="hora-cita" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.6); border: 2px solid rgba(0,217,255,0.4); border-radius: 8px; color: white; font-size: 16px; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#00d9ff'; this.style.boxShadow='0 0 15px rgba(0,217,255,0.5)'" onblur="this.style.borderColor='rgba(0,217,255,0.4)'; this.style.boxShadow='none'">
+    </div>
+</div>
+
+                <button type="submit" class="boton whatsapp" style="width: 100%; border: none; cursor: pointer; margin-top: 10px; font-size: 16px; background: #00d9ff; color: #000; font-weight: bold; padding: 14px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,217,255,0.4); transition: 0.3s;">
+                    📅 Confirmar y Enviar Cita por WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand"><strong>DR Tech Solutions</strong><span>Soporte informático y soluciones digitales confiables.</span></div>
+            <nav class="footer-nav" aria-label="Navegación del pie de página"><a href="index.html#acerca">Perfil</a><a href="servicios.html">Servicios</a><a href="cita.html#agendar">Agendar cita</a></nav>
+            <div class="footer-socials" aria-label="Redes sociales"><a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></div>
+        </div>
+        <div class="footer-bottom"><span>&copy; 2026 DR Tech Solutions. Todos los derechos reservados.</span><span>Atención técnica responsable y personalizada.</span></div>
+    </footer>
+
+    <!-- Botones Flotantes Interactivos de Redes Sociales + Cambio de Modo -->
+
+    <!-- SCRIPT DE WHATSAPP -->
+    <script>
+    function enviarCitaWhatsApp(event) {
+        event.preventDefault();
+        
+        const nombre = document.getElementById('nombre-cliente').value;
+        const servicio = document.getElementById('servicio-cita').value;
+        const fecha = document.getElementById('fecha-cita').value;
+        const hora = document.getElementById('hora-cita').value;
+        
+        const telefono = "18096682092";
+        
+        const mensaje = `Hola, DR Tech Solutions. Me gustaría agendar una cita.%0A%0A` +
+                        `👤 *Nombre:* ${nombre}%0A` +
+                        `🛠️ *Servicio:* ${servicio}%0A` +
+                        `📅 *Fecha:* ${fecha}%0A` +
+                        `⏰ *Hora:* ${hora}`;
+        
+        window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+    }
+    </script>
+
+    <!-- SCRIPT DE CURSOR CON ESTELA -->
+    <script>
+        const themeColors = {
+            dark: { cursor: '#00d9ff', glow: '#00d9ff', particle: '#7ce8ff' },
+            light: { cursor: '#0f6fff', glow: '#6ea7ff', particle: '#a7c8ff' },
+            retro: { cursor: '#ffbf3f', glow: '#ffd985', particle: '#ffe7a9' }
+        };
+
+        const cursor = document.createElement("div");
+        cursor.className = "cursor-rayo";
+        document.body.appendChild(cursor);
+
+        function updateCursorTheme() {
+            const theme = document.body.getAttribute('data-theme') || localStorage.getItem('tema') || 'dark';
+            const colors = themeColors[theme] || themeColors.dark;
+            cursor.style.background = colors.cursor;
+            cursor.style.boxShadow = `0 0 15px ${colors.glow}, 0 0 30px ${colors.glow}`;
+        }
+
+        cursor.style.cssText = `
+            width: 10px;
+            height: 10px;
+            background: #00d9ff;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 99999;
+            transition: transform 0.05s ease, background 0.25s ease, box-shadow 0.25s ease;
+        `;
+
+        document.addEventListener("mousemove", function(e){
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+        });
+
+        updateCursorTheme();
+    </script>
+    
+    <!-- SCRIPT DE FUNCIONALIDADES (Menú y Modo Claro/Oscuro) -->
+    <script>
+        function initMenusBehavior(){ return;
+            const menuToggle = document.getElementById('mobile-menu');
+            const menuNav = document.querySelector('nav');
+            const menusActions = document.querySelector('.menus-actions');
+            const socialTrigger = menusActions?.querySelector('.social-trigger');
+
+            if (menuToggle && menuNav) {
+                menuToggle.addEventListener('click', () => {
+                    const isOpen = menuNav.classList.toggle('nav-open');
+                    menuToggle.classList.toggle('active', isOpen);
+                    menuToggle.setAttribute('aria-expanded', String(isOpen));
+                    menuNav.querySelector('.menu')?.classList.toggle('active', isOpen);
+                });
+
+                document.querySelectorAll('.menu li a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuToggle.classList.remove('active');
+                        menuNav.classList.remove('nav-open');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuNav.querySelector('.menu')?.classList.remove('active');
+                    });
+                });
+            }
+
+            // Accessible open/close handlers for the Menus panel (focus trap, Esc to close, aria attributes)
+            const focusableSelector = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
+            let _lastFocusedBeforePanel = null;
+
+            function openMenusPanel(triggerEl) {
+                _lastFocusedBeforePanel = triggerEl || document.activeElement;
+                if(!adminPanel) return;
+                adminPanel.setAttribute('role', 'dialog');
+                adminPanel.setAttribute('aria-modal', 'true');
+                adminPanel.classList.add('open');
+                adminPanel.classList.remove('closing');
+                adminPanel.setAttribute('aria-hidden', 'false');
+                if (triggerEl) triggerEl.setAttribute('aria-expanded', 'true');
+
+                const focusables = Array.from(adminPanel.querySelectorAll(focusableSelector));
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (first) first.focus();
+
+                function _handleKey(e) {
+                    if (e.key === 'Escape') { e.preventDefault(); closeMenusPanel(); return; }
+                    if (e.key === 'Tab') {
+                        if (focusables.length === 0) { e.preventDefault(); return; }
+                        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                    }
+                }
+
+                adminPanel._keyHandler = _handleKey;
+                document.addEventListener('keydown', adminPanel._keyHandler);
+            }
+
+            function closeMenusPanel() {
+                if(!adminPanel) return;
+                adminPanel.classList.remove('open');
+                adminPanel.classList.add('closing');
+                adminPanel.setAttribute('aria-hidden', 'true');
+                if (adminBtn) adminBtn.setAttribute('aria-expanded', 'false');
+
+                if (adminPanel._keyHandler) {
+                    document.removeEventListener('keydown', adminPanel._keyHandler);
+                    delete adminPanel._keyHandler;
+                }
+
+                const _onTrans = function (ev) {
+                    if (ev.propertyName === 'transform') {
+                        adminPanel.classList.remove('closing');
+                        adminPanel.removeEventListener('transitionend', _onTrans);
+                    }
+                };
+                adminPanel.addEventListener('transitionend', _onTrans);
+
+                if (_lastFocusedBeforePanel && typeof _lastFocusedBeforePanel.focus === 'function') {
+                    try { _lastFocusedBeforePanel.focus(); } catch (e) { /* ignore */ }
+                }
+            }
+
+            if (adminBtn && adminPanel) {
+                adminBtn.setAttribute('aria-expanded', 'false');
+
+                adminBtn.addEventListener('click', (e) => {
+                    openMenusPanel(e.currentTarget);
+                    if (menuNav) {
+                        menuNav.classList.remove('nav-open');
+                        menuToggle && menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            if (closeAdmin && adminPanel) {
+                closeAdmin.addEventListener('click', () => {
+                    closeMenusPanel();
+                });
+            }
+
+            if (adminPanel) {
+                adminPanel.addEventListener('click', (e) => {
+                    const a = e.target.closest('a');
+                    if (a && a.getAttribute('href')) {
+                        closeMenusPanel();
+                    }
+                });
+            }
+
+            const redesPanel = document.querySelector('.redes-flotantes');
+
+            if (socialTrigger) {
+                if (redesPanel) {
+                    socialTrigger.addEventListener('click', () => {
+                        redesPanel.classList.toggle('is-open');
+                    });
+                    redesPanel.addEventListener('mouseleave', () => redesPanel.classList.remove('is-open'));
+                } else if (menusActions) {
+                    socialTrigger.addEventListener('click', () => {
+                        menusActions.classList.toggle('expanded');
+                    });
+                }
+            }
+
+            if (adminPanel) {
+                adminPanel.addEventListener('click', (e) => {
+                    const a = e.target.closest('a');
+                    if (a && a.getAttribute('href')) {
+                        adminPanel.classList.remove('open');
+                        adminPanel.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initMenusBehavior);
+       </script>
+
+<script>
+// Navegación dinámica: carga el contenido de otras páginas dentro del <main>
+(function(){
+    async function loadIntoMain(href, push=true){
+        try{
+            const urlObj = new URL(href, location.origin);
+            const fetchPath = urlObj.pathname + urlObj.search;
+            const res = await fetch(fetchPath, { cache: 'no-store' });
+            if (!res.ok) { window.location.href = href; return; }
+            const text = await res.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const newMain = doc.querySelector('main');
+            if(!newMain){ window.location.href = href; return; }
+            document.querySelector('main').innerHTML = newMain.innerHTML;
+            const newTitle = doc.querySelector('title');
+            if(newTitle) document.title = newTitle.textContent;
+            if(urlObj.hash){
+                const id = urlObj.hash.replace('#','');
+                const el = document.getElementById(id) || document.querySelector(urlObj.hash);
+                if(el) el.scrollIntoView({behavior:'smooth'});
+            } else {
+                window.scrollTo(0,0);
+            }
+            if(push) history.pushState({ajax:true, url: href}, '', href);
+            if(window.applyTheme){ window.applyTheme(localStorage.getItem('tema') || document.body.getAttribute('data-theme') || 'dark'); }
+        }catch(e){ console.error('Error cargando contenido', e); window.location.href = href; }
+    }
+
+    document.addEventListener('click', function(e){
+        const a = e.target.closest('a');
+        if(!a) return;
+        const href = a.getAttribute('href');
+        if(!href) return;
+        if(a.target === '_blank' || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+        if(href.startsWith('#')){
+            const el = document.getElementById(href.replace('#',''));
+            if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+            return;
+        }
+        if(href.endsWith('.html') || href.indexOf('/') === 0){
+            e.preventDefault();
+            loadIntoMain(href);
+        }
+    });
+
+    window.addEventListener('popstate', function(e){
+        if(e.state && e.state.url){ loadIntoMain(e.state.url, false); }
+        else { location.reload(); }
+    });
+})();
+</script>
+
+</body>
+</html>

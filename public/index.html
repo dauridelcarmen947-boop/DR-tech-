@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DR Tech Solutions</title>
+    
+    <!-- El ID "estilo-principal" permite que JavaScript identifique qué archivo cambiar -->
+    <link id="estilo-principal" rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="dark" class="background-animated">
+    <header>
+    <!-- Logo normal en la principal -->
+    <a href="index.html">
+        <img src="logo.svg" alt="DR Tech Logo" class="logo">
+        
+    </a>
+    <h1 class="titulo-principal">DR Tech Solutions</h1>
+    <p class="subtitulo">Técnico de soporte informático especializado en soluciones tecnológicas</p>
+     
+    <nav aria-label="Menú principal">
+    <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    <ul class="menu">
+        <li><a href="index.html#acerca">Perfil</a></li>
+        <li><a href="Mi Experiencia.html">Mi Experiencia</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="cita.html#agendar">Agendar Cita</a></li>
+        <li class="menu-social-actions" aria-label="Accesos rápidos">
+            <button type="button" class="btn-flotante btn-modo" onclick="toggleModo()" data-tooltip="Cambiar tema" aria-label="Cambiar tema">🌓</button>
+            <a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp" aria-label="Contactar por WhatsApp">💬</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-instagram" data-tooltip="Instagram" aria-label="Visitar Instagram">◎</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-facebook" data-tooltip="Facebook" aria-label="Visitar Facebook">f</a>
+        </li>
+    </ul>
+</nav>
+<script src="menu.js" defer></script>
+</header>
+
+    <main>
+        <!-- Sección Acerca de mí con datos integrados -->
+        <section id="acerca" class="seccion-base acerca-card">
+            <div class="acerca-heading">
+                <span class="acerca-icon" aria-hidden="true">⌘</span>
+                <div>
+                    <span class="acerca-eyebrow">Perfil tecnológico</span>
+                    <h2>Acerca de mí</h2>
+                </div>
+            </div>
+            <div class="acerca-copy">
+              <p>
+                Soy Dauri Manuel del Carmen Ramírez, estudiante de Ingeniería en Sistemas en la Universidad Dominicana O&M, Sede Central. Cuento con 2 años de experiencia profesional en la solución de problemas informáticos. 
+              </p>
+              <p>
+                Mi enfoque combina el diagnóstico preciso de hardware con sólidos conocimientos en configuración de redes básicas y desarrollo web. Mi objetivo es asegurar que la infraestructura tecnológica de tu hogar o empresa funcione de manera óptima, segura y sin interrupciones.
+              </p>
+            </div>
+        </section>
+
+        <!-- Sección de Servicios Individuales -->
+        <section id="servicios" class="seccion-base">
+            <h2>Servicios Especializados</h2>
+            <div class="contenedor-grid">
+               <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
+                    <h3>💻 Mantenimiento de Equipos</h3>
+                    <p>Limpieza física, optimización de sistema operativo y eliminación de virus para máxima velocidad.</p>
+                </div>
+               <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
+                    <h3>🛜 Configuración de Redes</h3>
+                    <p>Instalación de routers, extensión de señal Wi-Fi y configuración de redes locales para oficinas.</p>
+                </div>
+               <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
+                    <h3>🛠️ Reparación y Diagnóstico</h3>
+                    <p>Solución a fallos de encendido, cambios de disco duro a SSD y rescate de datos importantes.</p>
+                </div>
+                <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
+                    <h3>🌐 Creación de Páginas Web</h3>
+                    <p>Diseño y desarrollo de sitios web profesionales a la medida para impulsar la presencia digital de tu negocio y captar más clientes.</p>
+                </div>
+                <!-- Instalación y Soporte de Periféricos -->
+               <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
+                    <h3>🔌 Instalación y Soporte de Periféricos</h3>
+                    <p>Configuración de impresoras de red, cámaras de seguridad (CCTV) básicas y dispositivos inteligentes para el hogar u oficina.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ventajas" class="seccion-base">
+            <h2>¿Por qué trabajar conmigo?</h2>
+            <div class="feature-grid">
+               <article class="feature-card">
+                   <span class="feature-icon">⚡</span>
+                   <h3>Respuesta rápida</h3>
+                   <p>Soluciones prácticas y diagnósticos claros para volver a tu operación normal sin perder tiempo.</p>
+               </article>
+               <article class="feature-card">
+                   <span class="feature-icon">🛡️</span>
+                   <h3>Enfoque seguro</h3>
+                   <p>Respaldos, configuración cuidada y recomendaciones orientadas a proteger tus archivos y datos.</p>
+               </article>
+               <article class="feature-card">
+                   <span class="feature-icon">💡</span>
+                   <h3>Soluciones a medida</h3>
+                   <p>Te ayudo con mantenimiento, redes, soporte técnico y presencia digital según tu necesidad real.</p>
+               </article>
+            </div>
+            <div class="cta-banner">
+               <div>
+                   <span class="eyebrow">Necesitas ayuda técnica</span>
+                   <h3>Haz crecer tu negocio o deja tu equipo funcionando como nuevo.</h3>
+               </div>
+               <a class="boton cita" href="cita.html#agendar">Solicitar cita</a>
+            </div>
+        </section>
+
+      <!-- Sección de Preguntas Frecuentes Mejorada -->
+        <section id="faq" class="seccion-base">
+            <h2>Preguntas Frecuentes</h2>
+             
+            <div class="tarjeta-servicio faq-panel">
+                <p>Resolvemos las dudas más comunes sobre nuestros servicios de soporte técnico, desarrollo web y soluciones para empresas.</p>
+ 
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">⏱️ ¿Cuánto tiempo toma una reparación o formateo?<span class="faq-plus" aria-hidden="true">+</span></button>
+                    <p>Por lo general, el servicio de formateo, optimización e instalación de programas toma entre 24 y 48 horas, dependiendo del volumen de respaldos necesarios y la complejidad de diagnóstico del equipo.</p>
+                </div>
+ 
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">🏢 ¿Ofrecen soporte a domicilio y planes para empresas (B2B)?<span class="faq-plus" aria-hidden="true">+</span></button>
+                    <p>Sí. Realizamos visitas técnicas especializadas para configuración de redes locales, cableado estructurado y mantenimiento preventivo en oficinas, además de planes corporativos adaptados a las necesidades de tu negocio.</p>
+                </div>
+ 
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">🔒 ¿Mis archivos e información personal están seguros?<span class="faq-plus" aria-hidden="true">+</span></button>
+                    <p>Absolutamente. Antes de realizar cualquier formateo o intervención crítica en el sistema operativo, realizamos un respaldo seguro (backup) de tus documentos, fotos y archivos importantes para garantizar que no pierdas nada.</p>
+                </div>
+ 
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">🛡️ ¿Los servicios cuentan con garantía?<span class="faq-plus" aria-hidden="true">+</span></button>
+                    <p>Sí, todos nuestros trabajos de reparación, instalación de software y mantenimiento físico cuentan con una garantía de satisfacción y soporte post-servicio para asegurar el correcto funcionamiento de tu equipo.</p>
+                </div>
+ 
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">🌐 ¿Cómo es el proceso para la creación de páginas web?<span class="faq-plus" aria-hidden="true">+</span></button>
+                    <p>Comenzamos con una asesoría inicial para conocer los objetivos de tu negocio, definimos la estructura y el diseño adaptado a celulares, y realizamos entregas progresivas hasta poner tu sitio web 100% operativo en línea.</p>
+                </div>
+ 
+                <div class="faq-item faq-final">
+                    <button class="faq-question" type="button" aria-expanded="false">📅 ¿Cómo puedo coordinar una cita o solicitar una cotización?<span class="faq-plus" aria-hidden="true">+</span></button>
+                    <p>Puede agendar una cita directamente en nuestra sección dedicada exclusivamente a ello:</p>
+                    <a class="faq-cta" href="cita.html">🗓️ Ir a la página de citas</a>
+                </div>
+            </div>
+        </section>
+        
+</script>
+
+<script>
+        const themeColors = {
+            dark: { cursor: '#00d9ff', glow: '#00d9ff', particle: '#7ce8ff' },
+            light: { cursor: '#0f6fff', glow: '#6ea7ff', particle: '#a7c8ff' },
+            retro: { cursor: '#ffbf3f', glow: '#ffd985', particle: '#ffe7a9' }
+        };
+
+        const cursor = document.createElement("div");
+        cursor.className = "cursor-rayo";
+        document.body.appendChild(cursor);
+
+        function updateCursorTheme() {
+            const theme = document.body.getAttribute('data-theme') || localStorage.getItem('tema') || 'dark';
+            const colors = themeColors[theme] || themeColors.dark;
+            cursor.style.background = colors.cursor;
+            cursor.style.boxShadow = `0 0 15px ${colors.glow}, 0 0 30px ${colors.glow}`;
+        }
+
+        cursor.style.cssText = `
+            width: 10px;
+            height: 10px;
+            background: #00d9ff;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 99999;
+            transition: transform 0.05s ease, background 0.25s ease, box-shadow 0.25s ease;
+        `;
+
+        document.addEventListener("mousemove", function(e){
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+        });
+
+        updateCursorTheme();
+    </script>
+
+    <style>
+        @keyframes desvanecerCursor {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
+        }
+    </style>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <strong>DR Tech Solutions</strong>
+                <span>Soporte informático y soluciones digitales confiables.</span>
+            </div>
+            <nav class="footer-nav" aria-label="Navegación del pie de página">
+                <a href="index.html#acerca">Perfil</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="cita.html#agendar">Agendar cita</a>
+            </nav>
+            <div class="footer-socials" aria-label="Redes sociales">
+                <a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 DR Tech Solutions. Todos los derechos reservados.</span>
+            <span>Atención técnica responsable y personalizada.</span>
+        </div>
+    </footer>
+   <script>
+    function initMenusBehavior(){ return;
+       const menuToggle = document.getElementById('mobile-menu');
+       const menuNav = document.querySelector('nav');
+       const menusActions = document.querySelector('.menus-actions');
+       const socialTrigger = menusActions?.querySelector('.social-trigger');
+
+       if (menuToggle && menuNav) {
+           menuToggle.addEventListener('click', () => {
+               const isOpen = menuNav.classList.toggle('nav-open');
+               menuToggle.classList.toggle('active', isOpen);
+               menuToggle.setAttribute('aria-expanded', String(isOpen));
+               menuNav.querySelector('.menu')?.classList.toggle('active', isOpen);
+           });
+
+           document.querySelectorAll('.menu li a').forEach(link => {
+               link.addEventListener('click', () => {
+                   menuToggle.classList.remove('active');
+                   menuNav.classList.remove('nav-open');
+                   menuToggle.setAttribute('aria-expanded', 'false');
+                   menuNav.querySelector('.menu')?.classList.remove('active');
+               });
+           });
+       }
+
+       // Accessible open/close handlers for the Menus panel (focus trap, Esc to close, aria attributes)
+       const focusableSelector = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
+       let _lastFocusedBeforePanel = null;
+
+       function openMenusPanel(triggerEl) {
+           _lastFocusedBeforePanel = triggerEl || document.activeElement;
+           if(!adminPanel) return;
+           adminPanel.setAttribute('role', 'dialog');
+           adminPanel.setAttribute('aria-modal', 'true');
+           adminPanel.classList.add('open');
+           adminPanel.classList.remove('closing');
+           adminPanel.setAttribute('aria-hidden', 'false');
+           if (triggerEl) triggerEl.setAttribute('aria-expanded', 'true');
+
+           const focusables = Array.from(adminPanel.querySelectorAll(focusableSelector));
+           const first = focusables[0];
+           const last = focusables[focusables.length - 1];
+           if (first) first.focus();
+
+           function _handleKey(e) {
+               if (e.key === 'Escape') { e.preventDefault(); closeMenusPanel(); return; }
+               if (e.key === 'Tab') {
+                   if (focusables.length === 0) { e.preventDefault(); return; }
+                   if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                   else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+               }
+           }
+
+           adminPanel._keyHandler = _handleKey;
+           document.addEventListener('keydown', adminPanel._keyHandler);
+       }
+
+       function closeMenusPanel() {
+           if(!adminPanel) return;
+           // Start closing animation (CSS transition on transform handles slide-out)
+           adminPanel.classList.remove('open');
+           adminPanel.classList.add('closing');
+           adminPanel.setAttribute('aria-hidden', 'true');
+           if (adminBtn) adminBtn.setAttribute('aria-expanded', 'false');
+
+           if (adminPanel._keyHandler) {
+               document.removeEventListener('keydown', adminPanel._keyHandler);
+               delete adminPanel._keyHandler;
+           }
+
+           const _onTrans = function (ev) {
+               if (ev.propertyName === 'transform') {
+                   adminPanel.classList.remove('closing');
+                   adminPanel.removeEventListener('transitionend', _onTrans);
+               }
+           };
+           adminPanel.addEventListener('transitionend', _onTrans);
+
+           // return focus to previous element
+           if (_lastFocusedBeforePanel && typeof _lastFocusedBeforePanel.focus === 'function') {
+               try { _lastFocusedBeforePanel.focus(); } catch (e) { /* ignore */ }
+           }
+       }
+
+       if (adminBtn && adminPanel) {
+           // Set ARIA attributes on trigger
+           adminBtn.setAttribute('aria-expanded', 'false');
+
+           adminBtn.addEventListener('click', (e) => {
+               openMenusPanel(e.currentTarget);
+               if (menuNav) {
+                   menuNav.classList.remove('nav-open');
+                   if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+               }
+           });
+       }
+
+       if (closeAdmin && adminPanel) {
+           closeAdmin.addEventListener('click', () => {
+       }
+               }
+           });
+           });
+               }
+           });
+       }
+
+       const redesPanel = document.querySelector('.redes-flotantes');
+
+       if (socialTrigger) {
+           if (redesPanel) {
+               socialTrigger.addEventListener('click', () => {
+                   redesPanel.classList.toggle('is-open');
+               });
+               redesPanel.addEventListener('mouseleave', () => redesPanel.classList.remove('is-open'));
+           } else if (menusActions) {
+               socialTrigger.addEventListener('click', () => {
+                   menusActions.classList.toggle('expanded');
+               });
+           }
+       }
+   }
+
+   document.addEventListener('DOMContentLoaded', initMenusBehavior);
+
+   document.addEventListener('DOMContentLoaded', () => {
+       document.querySelectorAll('.faq-item').forEach((item) => {
+           const trigger = item.querySelector('.faq-question');
+           if (!trigger) return;
+           const toggle = () => {
+               const shouldExpand = !item.classList.contains('expanded');
+               document.querySelectorAll('.faq-item.expanded').forEach((openItem) => {
+                   openItem.classList.remove('expanded');
+                   openItem.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+               });
+               item.classList.toggle('expanded', shouldExpand);
+               trigger.setAttribute('aria-expanded', String(shouldExpand));
+           };
+           trigger.addEventListener('click', toggle);
+       });
+   });
+
+   const themes = ['dark', 'light', 'retro'];
+   const themeIcons = { dark: '🌙', light: '☀️', retro: '🕹️' };
+   const themeLabels = { dark: 'Tema oscuro', light: 'Tema blanco', retro: 'Tema retro' };
+
+   function applyTheme(themeName) {
+       const body = document.body;
+       body.setAttribute('data-theme', themeName);
+       localStorage.setItem('tema', themeName);
+       const btn = document.querySelector('.btn-modo');
+       if (btn) {
+           btn.textContent = themeIcons[themeName] || '🌙';
+           btn.setAttribute('data-tooltip', themeLabels[themeName] || 'Tema oscuro');
+       }
+
+       if (window.updateCursorTheme) {
+           window.updateCursorTheme();
+       }
+
+       const linkCss = document.getElementById('estilo-principal');
+       if (linkCss) {
+           linkCss.setAttribute('href', 'style.css');
+       }
+   }
+
+   function toggleModo() {
+       const current = document.body.getAttribute('data-theme') || localStorage.getItem('tema') || 'dark';
+       const currentIndex = themes.indexOf(current) >= 0 ? themes.indexOf(current) : 0;
+       const nextTheme = themes[(currentIndex + 1) % themes.length];
+       applyTheme(nextTheme);
+   }
+
+   window.addEventListener('DOMContentLoaded', () => {
+       const saved = localStorage.getItem('tema') || 'dark';
+       applyTheme(saved);
+   });
+   </script>
+
+<script>
+// Navegación dinámica: carga el contenido de otras páginas dentro del <main>
+(function(){
+    async function loadIntoMain(href, push=true){
+        try{
+            const urlObj = new URL(href, location.origin);
+            const fetchPath = urlObj.pathname + urlObj.search;
+            const res = await fetch(fetchPath, { cache: 'no-store' });
+            if (!res.ok) { window.location.href = href; return; }
+            const text = await res.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const newMain = doc.querySelector('main');
+            if(!newMain){ window.location.href = href; return; }
+            document.querySelector('main').innerHTML = newMain.innerHTML;
+            // Update title
+            const newTitle = doc.querySelector('title');
+            if(newTitle) document.title = newTitle.textContent;
+            // Scroll to hash if present
+            if(urlObj.hash){
+                const id = urlObj.hash.replace('#','');
+                const el = document.getElementById(id) || document.querySelector(urlObj.hash);
+                if(el) el.scrollIntoView({behavior:'smooth'});
+            } else {
+                window.scrollTo(0,0);
+            }
+            // Update URL
+            if(push) history.pushState({ajax:true, url: href}, '', href);
+            // Re-run page initialization (theme, cursor)
+            if(window.applyTheme){ window.applyTheme(localStorage.getItem('tema') || document.body.getAttribute('data-theme') || 'dark'); }
+        }catch(e){ console.error('Error cargando contenido', e); window.location.href = href; }
+    }
+
+    document.addEventListener('click', function(e){
+        const a = e.target.closest('a');
+        if(!a) return;
+        const href = a.getAttribute('href');
+        if(!href) return;
+        if(a.target === '_blank' || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+        // If it's just an anchor to the current page, perform smooth scroll
+        if(href.startsWith('#')){
+            const el = document.getElementById(href.replace('#',''));
+            if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+            return;
+        }
+        if(href.endsWith('.html') || href.indexOf('/') === 0){
+            e.preventDefault();
+            loadIntoMain(href);
+        }
+    });
+
+    window.addEventListener('popstate', function(e){
+        if(e.state && e.state.url){ loadIntoMain(e.state.url, false); }
+        else { location.reload(); }
+    });
+})();
+</script>
+</body>
+</html>
