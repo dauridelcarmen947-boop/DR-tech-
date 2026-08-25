@@ -32,6 +32,7 @@
         <li><a href="servicios.html">Servicios</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
         <li><a href="cita.html#agendar">Agendar Cita</a></li>
+        <li><a href="juego.html" class="active">Zona de Juegos</a></li>
         <li class="menu-social-actions" aria-label="Accesos rápidos">
             <button type="button" class="btn-flotante btn-modo" onclick="toggleModo()" data-tooltip="Cambiar tema" aria-label="Cambiar tema">🌓</button>
             <a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp" aria-label="Contactar por WhatsApp">💬</a>
@@ -328,11 +329,7 @@
 
        if (closeAdmin && adminPanel) {
            closeAdmin.addEventListener('click', () => {
-       }
-               }
-           });
-           });
-               }
+               closeMenusPanel();
            });
        }
 

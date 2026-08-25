@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona de Juegos | DR Tech Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barra de navegación superior -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">DR Tech Solutions</div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="juego.html" class="active">Zona de Juegos</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenedor principal de la Trivia -->
+    <main>
+        <div class="game-container">
+            <h1>⚡ Trivia Aleatoria Extreme</h1>
+            <p>¡Pon a prueba tu suerte y cultura general! Tienes 4 opciones, pero solo una es correcta.</p>
+            
+            <div class="score-board">
+                Puntuación: <span id="score">0</span> | Pregunta: <span id="question-count">1</span>/5
+            </div>
+
+            <div id="game-box">
+                <p id="question-text">Cargando pregunta...</p>
+                <div class="options-grid" id="options-container">
+                    <!-- Los botones de opciones se cargan dinámicamente con JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Archivo de lógica del juego -->
+    <script src="juego.js"></script>
+</body>
+</html>
