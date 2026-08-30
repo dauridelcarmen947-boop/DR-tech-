@@ -158,44 +158,7 @@
         <div class="footer-bottom"><span>&copy; 2026 DR Tech Solutions. Todos los derechos reservados.</span><span>Atención técnica responsable y personalizada.</span></div>
     </footer>
 
-    <!-- Scripts Interactivos -->
-    <script>
-        const themeColors = {
-            dark: { cursor: '#00d9ff', glow: '#00d9ff', particle: '#7ce8ff' },
-            light: { cursor: '#0f6fff', glow: '#6ea7ff', particle: '#a7c8ff' },
-            retro: { cursor: '#ffbf3f', glow: '#ffd985', particle: '#ffe7a9' }
-        };
-
-        const cursor = document.createElement('div');
-        cursor.className = 'cursor-rayo';
-        document.body.appendChild(cursor);
-
-        function updateCursorTheme() {
-            const theme = document.body.getAttribute('data-theme') || localStorage.getItem('tema') || 'dark';
-            const colors = themeColors[theme] || themeColors.dark;
-            cursor.style.background = colors.cursor;
-            cursor.style.boxShadow = `0 0 15px ${colors.glow}, 0 0 30px ${colors.glow}`;
-        }
-
-        cursor.style.cssText = `
-            width: 10px;
-            height: 10px;
-            background: #00d9ff;
-            border-radius: 50%;
-            position: fixed;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 99999;
-            transition: transform 0.05s ease, background 0.25s ease, box-shadow 0.25s ease;
-        `;
-
-        document.addEventListener('mousemove', function(e) {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        updateCursorTheme();
-    </script>
+   
 
     <script>
         const themes = ['dark', 'light', 'retro'];
