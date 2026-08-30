@@ -27,12 +27,12 @@
                 <span class="bar"></span>
             </div>
             <ul class="menu">
-    <li><a href="index.html#acerca"><span class="menu-icon">👤</span><span class="menu-text">Perfil</span></a></li>
-    <li><a href="Mi Experiencia.html"><span class="menu-icon">📜</span><span class="menu-text">Mi Experiencia</span></a></li>
-    <li><a href="servicios.html"><span class="menu-icon">🛠️</span><span class="menu-text">Servicios</span></a></li>
-    <li><a href="index.html#faq"><span class="menu-icon">❓</span><span class="menu-text">FAQ</span></a></li>
-    <li><a href="cita.html#agendar"><span class="menu-icon">📅</span><span class="menu-text">Agendar Cita</span></a></li>
-    <li><a href="juego.html" class="active"><span class="menu-icon">🎮</span><span class="menu-text">Zona de Juegos</span></a></li>
+                <li><a href="index.html#acerca"><span class="menu-icon">👤</span><span class="menu-text">Perfil</span></a></li>
+                <li><a href="Mi Experiencia.html"><span class="menu-icon">📜</span><span class="menu-text">Mi Experiencia</span></a></li>
+                <li><a href="servicios.html"><span class="menu-icon">🛠️</span><span class="menu-text">Servicios</span></a></li>
+                <li><a href="index.html#faq"><span class="menu-icon">❓</span><span class="menu-text">FAQ</span></a></li>
+                <li><a href="cita.html#agendar"><span class="menu-icon">📅</span><span class="menu-text">Agendar Cita</span></a></li>
+                <li><a href="juego.html" class="active"><span class="menu-icon">🎮</span><span class="menu-text">Zona de Juegos</span></a></li>
 
                 <li class="menu-social-actions" aria-label="Accesos rápidos">
                     <button type="button" class="btn-flotante btn-modo" onclick="toggleModo()" data-tooltip="Cambiar tema" aria-label="Cambiar tema">🌓</button>
@@ -79,25 +79,39 @@
                     </select>
                 </div>
 
-               <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-    <!-- Campo de Fecha con Icono Resaltado -->
-    <div style="flex: 1; min-width: 240px;">
-        <label style="color: var(--text-color, #00d9ff); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: bold;">
-            <span style="color: #00d9ff; background: rgba(0,217,255,0.15); border: 1px solid #00d9ff; padding: 4px 10px; border-radius: 6px; box-shadow: 0 0 12px rgba(0,217,255,0.5); font-size: 20px; text-shadow: 0 0 8px #1b8f5800;">📅</span> 
-            Fecha Preferida:
-        </label>
-        <input type="date" id="fecha-cita" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.6); border: 2px solid rgba(0,217,255,0.4); border-radius: 8px; color: white; font-size: 16px; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#00d9ff'; this.style.boxShadow='0 0 15px rgba(0,217,255,0.5)'" onblur="this.style.borderColor='rgba(0,217,255,0.4)'; this.style.boxShadow='none'">
-    </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="color: var(--text-color, #00d9ff); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: bold;">
+                        <span style="color: #00d9ff; background: rgba(0,217,255,0.15); border: 1px solid #00d9ff; padding: 4px 10px; border-radius: 6px; box-shadow: 0 0 12px rgba(0,217,255,0.5); font-size: 20px;">📍</span> 
+                        Ubicación:
+                    </label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="ubicacion-cliente" required placeholder="Escribe tu dirección o usa el GPS" style="flex: 1; padding: 14px; background: rgba(0,0,0,0.6); border: 2px solid rgba(0,217,255,0.4); border-radius: 8px; color: white; font-size: 16px; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#00d9ff'; this.style.boxShadow='0 0 15px rgba(0,217,255,0.5)'" onblur="this.style.borderColor='rgba(0,217,255,0.4)'; this.style.boxShadow='none'">
+                        
+                        <button type="button" onclick="obtenerUbicacionMaps()" style="background: rgba(0,217,255,0.1); border: 2px solid rgba(0,217,255,0.4); color: #00d9ff; padding: 0 15px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s;" onmouseover="this.style.borderColor='#00d9ff'; this.style.boxShadow='0 0 15px rgba(0,217,255,0.5)'" onmouseout="this.style.borderColor='rgba(0,217,255,0.4)'; this.style.boxShadow='none'">
+                            🗺️ GPS
+                        </button>
+                    </div>
+                </div>
 
-    <!-- Campo de Hora con Icono Resaltado -->
-    <div style="flex: 1; min-width: 240px;">
-        <label style="color: var(--text-color, #00d9ff); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: bold;">
-            <span style="color: #00d9ff; background: rgba(0,217,255,0.15); border: 1px solid #00d9ff; padding: 4px 10px; border-radius: 6px; box-shadow: 0 0 12px rgba(0,217,255,0.5); font-size: 20px; text-shadow: 0 0 8px #00d9ff;">⏰</span> 
-            Hora Preferida:
-        </label>
-        <input type="time" id="hora-cita" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.6); border: 2px solid rgba(0,217,255,0.4); border-radius: 8px; color: white; font-size: 16px; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#00d9ff'; this.style.boxShadow='0 0 15px rgba(0,217,255,0.5)'" onblur="this.style.borderColor='rgba(0,217,255,0.4)'; this.style.boxShadow='none'">
-    </div>
-</div>
+               <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <!-- Campo de Fecha con Icono Resaltado -->
+                    <div style="flex: 1; min-width: 240px;">
+                        <label style="color: var(--text-color, #00d9ff); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: bold;">
+                            <span style="color: #00d9ff; background: rgba(0,217,255,0.15); border: 1px solid #00d9ff; padding: 4px 10px; border-radius: 6px; box-shadow: 0 0 12px rgba(0,217,255,0.5); font-size: 20px; text-shadow: 0 0 8px #1b8f5800;">📅</span> 
+                            Fecha Preferida:
+                        </label>
+                        <input type="date" id="fecha-cita" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.6); border: 2px solid rgba(0,217,255,0.4); border-radius: 8px; color: white; font-size: 16px; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#00d9ff'; this.style.boxShadow='0 0 15px rgba(0,217,255,0.5)'" onblur="this.style.borderColor='rgba(0,217,255,0.4)'; this.style.boxShadow='none'">
+                    </div>
+
+                    <!-- Campo de Hora con Icono Resaltado -->
+                    <div style="flex: 1; min-width: 240px;">
+                        <label style="color: var(--text-color, #00d9ff); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: bold;">
+                            <span style="color: #00d9ff; background: rgba(0,217,255,0.15); border: 1px solid #00d9ff; padding: 4px 10px; border-radius: 6px; box-shadow: 0 0 12px rgba(0,217,255,0.5); font-size: 20px; text-shadow: 0 0 8px #00d9ff;">⏰</span> 
+                            Hora Preferida:
+                        </label>
+                        <input type="time" id="hora-cita" required style="width: 100%; padding: 14px; background: rgba(0,0,0,0.6); border: 2px solid rgba(0,217,255,0.4); border-radius: 8px; color: white; font-size: 16px; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#00d9ff'; this.style.boxShadow='0 0 15px rgba(0,217,255,0.5)'" onblur="this.style.borderColor='rgba(0,217,255,0.4)'; this.style.boxShadow='none'">
+                    </div>
+                </div>
 
                 <button type="submit" class="boton whatsapp" style="width: 100%; border: none; cursor: pointer; margin-top: 10px; font-size: 16px; background: #00d9ff; color: #000; font-weight: bold; padding: 14px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,217,255,0.4); transition: 0.3s;">
                     📅 Confirmar y Enviar Cita por WhatsApp
@@ -117,13 +131,38 @@
 
     <!-- Botones Flotantes Interactivos de Redes Sociales + Cambio de Modo -->
 
-    <!-- SCRIPT DE WHATSAPP -->
+    <!-- SCRIPT DE WHATSAPP Y UBICACIÓN -->
     <script>
+    function obtenerUbicacionMaps() {
+        const inputUbicacion = document.getElementById("ubicacion-cliente");
+        
+        if (!navigator.geolocation) {
+            inputUbicacion.value = "GPS no compatible en este navegador";
+            return;
+        }
+
+        inputUbicacion.value = "Ubicando...";
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                // Genera un enlace de Google Maps en lugar de coordenadas crudas
+                inputUbicacion.value = `https://maps.google.com/?q=${lat},${lon}`;
+            },
+            (error) => {
+                inputUbicacion.value = "";
+                inputUbicacion.placeholder = "Error al obtener GPS. Escribe tu dirección manual.";
+            }
+        );
+    }
+
     function enviarCitaWhatsApp(event) {
         event.preventDefault();
         
         const nombre = document.getElementById('nombre-cliente').value;
         const servicio = document.getElementById('servicio-cita').value;
+        const ubicacion = document.getElementById('ubicacion-cliente').value;
         const fecha = document.getElementById('fecha-cita').value;
         const hora = document.getElementById('hora-cita').value;
         
@@ -132,6 +171,7 @@
         const mensaje = `Hola, DR Tech Solutions. Me gustaría agendar una cita.%0A%0A` +
                         `👤 *Nombre:* ${nombre}%0A` +
                         `🛠️ *Servicio:* ${servicio}%0A` +
+                        `📍 *Ubicación:* ${ubicacion}%0A` +
                         `📅 *Fecha:* ${fecha}%0A` +
                         `⏰ *Hora:* ${hora}`;
         
@@ -315,60 +355,60 @@
         }
 
         document.addEventListener('DOMContentLoaded', initMenusBehavior);
-       </script>
+    </script>
 
-<script>
-// Navegación dinámica: carga el contenido de otras páginas dentro del <main>
-(function(){
-    async function loadIntoMain(href, push=true){
-        try{
-            const urlObj = new URL(href, location.origin);
-            const fetchPath = urlObj.pathname + urlObj.search;
-            const res = await fetch(fetchPath, { cache: 'no-store' });
-            if (!res.ok) { window.location.href = href; return; }
-            const text = await res.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            const newMain = doc.querySelector('main');
-            if(!newMain){ window.location.href = href; return; }
-            document.querySelector('main').innerHTML = newMain.innerHTML;
-            const newTitle = doc.querySelector('title');
-            if(newTitle) document.title = newTitle.textContent;
-            if(urlObj.hash){
-                const id = urlObj.hash.replace('#','');
-                const el = document.getElementById(id) || document.querySelector(urlObj.hash);
-                if(el) el.scrollIntoView({behavior:'smooth'});
-            } else {
-                window.scrollTo(0,0);
+    <script>
+    // Navegación dinámica: carga el contenido de otras páginas dentro del <main>
+    (function(){
+        async function loadIntoMain(href, push=true){
+            try{
+                const urlObj = new URL(href, location.origin);
+                const fetchPath = urlObj.pathname + urlObj.search;
+                const res = await fetch(fetchPath, { cache: 'no-store' });
+                if (!res.ok) { window.location.href = href; return; }
+                const text = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                const newMain = doc.querySelector('main');
+                if(!newMain){ window.location.href = href; return; }
+                document.querySelector('main').innerHTML = newMain.innerHTML;
+                const newTitle = doc.querySelector('title');
+                if(newTitle) document.title = newTitle.textContent;
+                if(urlObj.hash){
+                    const id = urlObj.hash.replace('#','');
+                    const el = document.getElementById(id) || document.querySelector(urlObj.hash);
+                    if(el) el.scrollIntoView({behavior:'smooth'});
+                } else {
+                    window.scrollTo(0,0);
+                }
+                if(push) history.pushState({ajax:true, url: href}, '', href);
+                if(window.applyTheme){ window.applyTheme(localStorage.getItem('tema') || document.body.getAttribute('data-theme') || 'dark'); }
+            }catch(e){ console.error('Error cargando contenido', e); window.location.href = href; }
+        }
+
+        document.addEventListener('click', function(e){
+            const a = e.target.closest('a');
+            if(!a) return;
+            const href = a.getAttribute('href');
+            if(!href) return;
+            if(a.target === '_blank' || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+            if(href.startsWith('#')){
+                const el = document.getElementById(href.replace('#',''));
+                if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+                return;
             }
-            if(push) history.pushState({ajax:true, url: href}, '', href);
-            if(window.applyTheme){ window.applyTheme(localStorage.getItem('tema') || document.body.getAttribute('data-theme') || 'dark'); }
-        }catch(e){ console.error('Error cargando contenido', e); window.location.href = href; }
-    }
+            if(href.endsWith('.html') || href.indexOf('/') === 0){
+                e.preventDefault();
+                loadIntoMain(href);
+            }
+        });
 
-    document.addEventListener('click', function(e){
-        const a = e.target.closest('a');
-        if(!a) return;
-        const href = a.getAttribute('href');
-        if(!href) return;
-        if(a.target === '_blank' || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-        if(href.startsWith('#')){
-            const el = document.getElementById(href.replace('#',''));
-            if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
-            return;
-        }
-        if(href.endsWith('.html') || href.indexOf('/') === 0){
-            e.preventDefault();
-            loadIntoMain(href);
-        }
-    });
-
-    window.addEventListener('popstate', function(e){
-        if(e.state && e.state.url){ loadIntoMain(e.state.url, false); }
-        else { location.reload(); }
-    });
-})();
-</script>
+        window.addEventListener('popstate', function(e){
+            if(e.state && e.state.url){ loadIntoMain(e.state.url, false); }
+            else { location.reload(); }
+        });
+    })();
+    </script>
 
 </body>
 </html>
