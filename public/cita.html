@@ -17,11 +17,6 @@
         <a class="tech-brand" href="index.html" aria-label="DR Tech Solutions, inicio"><img src="logo.svg" alt="" width="46" height="46"><span>DR<span>TECH</span></span></a>
          
         <nav class="tech-nav" aria-label="Menú principal">
-            <button type="button" class="menu-toggle tech-menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
             <ul class="menu tech-menu"><li><a href="index.html">Inicio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="Mi Experiencia.html">Experiencia</a></li><li><a href="index.html#faq">FAQ</a></li><li><a class="tech-nav-cta active" href="cita.html#agendar">Agendar cita <span aria-hidden="true">↗</span></a></li><li><a href="juego.html">Juegos</a></li><li class="tech-social-actions"><button type="button" class="tech-theme" aria-label="Cambiar fondo">◐</button><a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎</a><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a></li></ul>
         </nav>
     </header>
@@ -326,7 +321,7 @@
             }catch(e){ console.error('Error cargando contenido', e); window.location.href = href; }
         }
 
-        document.addEventListener('click', function(e){
+        document.addEventListener('click', function(e){ return;
             const a = e.target.closest('a');
             if(!a) return;
             const href = a.getAttribute('href');
