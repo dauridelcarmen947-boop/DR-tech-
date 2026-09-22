@@ -1,154 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DR Tech Solutions</title>
-    
-    <!-- El ID "estilo-principal" permite que JavaScript identifique qué archivo cambiar -->
-    <link id="estilo-principal" rel="stylesheet" href="style.css">
+    <meta name="description" content="Servicios de soporte técnico, redes, desarrollo web y automatización de DR Tech Solutions.">
+    <title>Servicios | DR Tech Solutions</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-<body data-theme="dark" class="background-animated">
-
-    <header>
-        <!-- Logo normal en la principal -->
-        <a href="index.html">
-            <img src="logo.svg" alt="DR Tech Logo" class="logo">
-        </a>
-        <h1 class="titulo-principal">DR Tech Solutions</h1>
-        <p class="subtitulo">Técnico de soporte informático especializado en soluciones tecnológicas</p>
-         
-        <nav aria-label="Menú principal">
-            <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="menu">
-                <li><a href="index.html#acerca">Perfil</a></li>
-                <li><a href="Mi Experiencia.html">Mi Experiencia</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="index.html#faq">FAQ</a></li>
-                <li><a href="cita.html#agendar">Agendar Cita</a></li>
-                <li class="menu-social-actions" aria-label="Accesos rápidos">
-                    <button type="button" class="btn-flotante btn-modo" onclick="toggleModo()" data-tooltip="Cambiar tema" aria-label="Cambiar tema">🌓</button>
-                    <a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp" aria-label="Contactar por WhatsApp">💬</a>
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-instagram" data-tooltip="Instagram" aria-label="Visitar Instagram">◎</a>
-                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-facebook" data-tooltip="Facebook" aria-label="Visitar Facebook">f</a>
-                </li>
+<body data-theme="dark" class="background-animated tech-landing">
+    <header class="tech-header">
+        <a class="tech-brand" href="index.html" aria-label="DR Tech Solutions, inicio"><img src="logo.svg" alt="" width="46" height="46"><span>DR<span>TECH</span></span></a>
+        <nav class="tech-nav" aria-label="Navegación principal">
+            <button type="button" class="menu-toggle tech-menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <ul class="menu tech-menu">
+                <li><a href="index.html">Inicio</a></li><li><a href="servicios.html" class="active">Servicios</a></li><li><a href="Mi Experiencia.html">Experiencia</a></li><li><a href="index.html#faq">FAQ</a></li><li><a class="tech-nav-cta" href="cita.html#agendar">Agendar cita <span aria-hidden="true">↗</span></a></li><li><a href="juego.html">Juegos</a></li>
+                <li class="tech-social-actions"><button type="button" class="tech-theme" aria-label="Cambiar fondo">◐</button><a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎</a><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a></li>
             </ul>
         </nav>
-        <script src="menu.js" defer></script>
     </header>
-
     <main>
-        <!-- Sección de Catálogo de Servicios con estilo de tarjetas -->
-        <section id="catalogo" class="seccion-base">
-            <h2 style="text-align: center; display: block; border: none;">Nuestros Servicios Especializados</h2>
-            <p style="text-align: center; color: #a0a0a0; margin-bottom: 40px;">
-                Atención profesional garantizada respaldada por experiencia en soporte y desarrollo.
-            </p>
-
-            <div class="contenedor-grid">
-                
-                <!-- 1. Instalación de juegos -->
-                <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
-                    <h3>🎮 Instalación de Juegos</h3>
-                    <p>Configuración y optimización de videojuegos para PC. Catálogo variado que incluye desde clásicos retro hasta títulos modernos de alta exigencia gráfica.</p>
-                    <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20me%20interesa%20el%20servicio%20de%20instalación%20de%20juegos" target="_blank" style="margin-top: 20px; display: inline-block;">Consultar Juegos</a>
-                </div>
-
-                <!-- 2. Configuración de impresora y mantenimiento -->
-                <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
-                    <h3>🖨️ Impresoras y Mantenimiento</h3>
-                    <p>Instalación de drivers, configuración de red/Wi-Fi para impresión inalámbrica y mantenimiento preventivo o correctivo de equipos de impresión.</p>
-                    <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20necesito%20soporte%20con%20una%20impresora" target="_blank" style="margin-top: 20px; display: inline-block;">Cotizar Servicio</a>
-                </div>
-
-                <!-- 3. Formateo de computadora -->
-                <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
-                    <h3>💻 Formateo de Computadoras</h3>
-                    <p>Limpieza profunda de disco, reinstalación limpia de sistema, respaldo seguro de archivos personales y optimización general para acelerar el equipo.</p>
-                    <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20necesito%20formatear%20mi%20computadora" target="_blank" style="margin-top: 20px; display: inline-block;">Solicitar Formateo</a>
-                </div>
-
-                <!-- 4. Sistemas operativos -->
-                <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
-                    <h3>⚙️ Sistemas Operativos</h3>
-                    <p>Instalación y configuración avanzada de Windows o entornos especializados. Incluye activación, drivers oficiales y las actualizaciones necesarias.</p>
-                    <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20necesito%20instalar%20un%20sistema%20operativo" target="_blank" style="margin-top: 20px; display: inline-block;">Más Información</a>
-                </div>
-
-                <!-- 5. Asesoramiento de equipo técnico -->
-                <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
-                    <h3>🛠️ Asesoramiento Técnico</h3>
-                    <p>Orientación profesional para la compra de componentes, ensamblaje de PCs a la medida de tus necesidades presupuestarias y requerimientos de rendimiento.</p>
-                    <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20necesito%20asesoramiento%20para%20un%20equipo%20técnico" target="_blank" style="margin-top: 20px; display: inline-block;">Pedir Asesoría</a>
-                </div>
-
-                <!-- 6. Valor agregado acorde a tu perfil (Desarrollo Web / Redes) -->
-                <div class="tarjeta-servicio" style="border-color: #00d9ff; background: rgba(0, 217, 255, 0.03);">
-                    <h3>🌐 Páginas Web y Redes</h3>
-                    <p>Diseño y desarrollo de páginas web funcionales, además de configuración de redes básicas para hogares o pequeños negocios.</p>
-                    <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20me%20interesa%20el%20servicio%20de%20desarrollo%20web%20o%20redes" target="_blank" style="margin-top: 20px; display: inline-block;">Ver Soluciones Web</a>
-                </div>
-
+        <section class="tech-section" id="catalogo">
+            <div class="tech-section-heading"><div><p class="tech-eyebrow">CAPACIDADES</p><h1>Servicios diseñados<br><em>para avanzar.</em></h1></div><p>Soporte profesional para que tus equipos, redes y presencia digital trabajen a favor de tu negocio.</p></div>
+            <div class="tech-service-grid">
+                <article class="tech-service-card"><span class="tech-card-number">01</span><span class="tech-icon">◈</span><h2>Instalación de juegos</h2><p>Configuración y optimización de videojuegos para PC.</p><a href="https://wa.me/18096682092?text=Hola,%20me%20interesa%20el%20servicio%20de%20instalación%20de%20juegos" target="_blank" rel="noopener">↗</a></article>
+                <article class="tech-service-card"><span class="tech-card-number">02</span><span class="tech-icon">⌁</span><h2>Impresoras y mantenimiento</h2><p>Drivers, redes Wi-Fi e instalación de equipos de impresión.</p><a href="cita.html#agendar">↗</a></article>
+                <article class="tech-service-card"><span class="tech-card-number">03</span><span class="tech-icon">⌘</span><h2>Formateo y sistemas</h2><p>Respaldo, instalación limpia y optimización de computadoras.</p><a href="cita.html#agendar">↗</a></article>
+                <article class="tech-service-card"><span class="tech-card-number">04</span><span class="tech-icon">&lt;/&gt;</span><h2>Web y redes</h2><p>Páginas web funcionales y configuración de redes básicas.</p><a href="cita.html#agendar">↗</a></article>
             </div>
         </section>
-
-        <!-- Sección de Planes Mensuales B2B -->
-        <section id="planes" class="tarjeta seccion-base">
-            <h2 style="text-align: center;">Planes de Soporte Mensual</h2>
-            <p style="text-align: center; margin-bottom: 30px;">
-                Asegura el funcionamiento continuo de tus equipos con una iguala mensual y evita costosas interrupciones en tu negocio.
-            </p>
-            
-            <div class="contenedor-planes">
-                <!-- Plan Emprendedor / Hogar -->
-                <div class="plan-card">
-                    <h3>Plan Emprendedor</h3>
-                    <p class="precio">Cotizar tarifa</p>
-                    <ul class="lista-plan">
-                        <li>✔ Mantenimiento preventivo (1-3 PCs)</li>
-                        <li>✔ Soporte remoto básico</li>
-                        <li>✔ Limpieza de software y virus</li>
-                        <li>✔ Asesoría técnica vía WhatsApp</li>
-                    </ul>
-                    <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20me%20interesa%20cotizar%20el%20Plan%20Emprendedor" target="_blank">
-                        Solicitar Plan
-                    </a>
-                </div>
-
-                <!-- Plan Empresarial (Destacado) -->
-                <div class="plan-card destacado">
-                    <h3>Plan Empresarial (Recomendado)</h3>
-                    <p class="precio">Cotizar tarifa</p>
-                    <ul class="lista-plan">
-                        <li>✔ Soporte para red de hasta 10 equipos</li>
-                        <li>✔ Configuración y seguridad de Wi-Fi</li>
-                        <li>✔ Copias de seguridad (Backups) mensuales</li>
-                        <li>✔ 2 Visitas presenciales de emergencia</li>
-                        <li>✔ Soporte remoto prioritario</li>
-                    </ul>
-                    <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20me%20interesa%20cotizar%20el%20Plan%20Empresarial%20para%20mi%20negocio" target="_blank">
-                        Solicitar Plan
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección de navegación rápida o retorno -->
-        <section class="tarjeta-servicio" style="width: 100%; max-width: 600px; margin: 0 auto 50px; text-align: center;">
-            <h3 style="color: #00d9ff; margin-bottom: 10px;">¿Tienes dudas sobre qué servicio requiere tu equipo?</h3>
-            <p style="margin-bottom: 20px; color: #ccc;">Comunícate directamente y realizamos un diagnóstico inicial.</p>
-            <a class="boton" href="index.html" style="border: 2px solid #555; color: #fff; background: transparent;">
-                ⬅ Volver a la página principal
-            </a>
+        <section class="tech-section" id="planes">
+            <div class="tech-section-heading"><div><p class="tech-eyebrow">SOPORTE CONTINUO</p><h2>Planes para trabajar<br><em>sin interrupciones.</em></h2></div></div>
+            <div class="tech-service-grid"><article class="tech-service-card"><span class="tech-card-number">PLAN 01</span><span class="tech-icon">✦</span><h2>Emprendedor</h2><p>Mantenimiento preventivo, soporte remoto y asesoría técnica para equipos del hogar o negocio.</p><a href="cita.html#agendar">↗</a></article><article class="tech-service-card"><span class="tech-card-number">PLAN 02</span><span class="tech-icon">◆</span><h2>Empresarial</h2><p>Redes, seguridad Wi-Fi, backups y soporte prioritario para tu operación.</p><a href="cita.html#agendar">↗</a></article></div>
         </section>
     </main>
-
     <footer>
         <div class="footer-inner">
             <div class="footer-brand"><strong>DR Tech Solutions</strong><span>Soporte informático y soluciones digitales confiables.</span></div>
@@ -157,86 +41,7 @@
         </div>
         <div class="footer-bottom"><span>&copy; 2026 DR Tech Solutions. Todos los derechos reservados.</span><span>Atención técnica responsable y personalizada.</span></div>
     </footer>
-
-   
-
-    <script>
-        const themes = ['dark', 'light', 'retro'];
-        const themeIcons = { dark: '🌙', light: '☀️', retro: '🕹️' };
-        const themeLabels = { dark: 'Tema oscuro', light: 'Tema blanco', retro: 'Tema retro' };
-
-        function applyTheme(themeName) {
-            const body = document.body;
-            body.setAttribute('data-theme', themeName);
-            localStorage.setItem('tema', themeName);
-            const btn = document.querySelector('.btn-modo');
-            if (btn) {
-                btn.textContent = themeIcons[themeName] || '🌙';
-                btn.setAttribute('data-tooltip', themeLabels[themeName] || 'Tema oscuro');
-            }
-            if (window.updateCursorTheme) {
-                window.updateCursorTheme();
-            }
-
-            const linkCss = document.getElementById('estilo-principal');
-            if (linkCss) {
-                linkCss.setAttribute('href', 'style.css');
-            }
-        }
-
-        function toggleModo() {
-            const current = document.body.getAttribute('data-theme') || localStorage.getItem('tema') || 'dark';
-            const currentIndex = themes.indexOf(current) >= 0 ? themes.indexOf(current) : 0;
-            const nextTheme = themes[(currentIndex + 1) % themes.length];
-            applyTheme(nextTheme);
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const saved = localStorage.getItem('tema') || 'dark';
-            applyTheme(saved);
-        });
-    </script>
-
-    <script>
-        // Navegación dinámica: carga el contenido de otras páginas dentro del <main>
-        (function(){
-            async function loadIntoMain(href, push=true){
-                try{
-                    const res = await fetch(href, { cache: 'no-store' });
-                    if (!res.ok) { window.location.href = href; return; }
-                    const text = await res.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(text, 'text/html');
-                    const newMain = doc.querySelector('main');
-                    if(!newMain){ window.location.href = href; return; }
-                    document.querySelector('main').innerHTML = newMain.innerHTML;
-                    const newTitle = doc.querySelector('title');
-                    if(newTitle) document.title = newTitle.textContent;
-                    if(push) history.pushState({ajax:true, url: href}, '', href);
-                    if(window.applyTheme){ window.applyTheme(localStorage.getItem('tema') || document.body.getAttribute('data-theme') || 'dark'); }
-                    window.scrollTo(0,0);
-                }catch(e){ console.error('Error cargando contenido', e); window.location.href = href; }
-            }
-
-            document.addEventListener('click', function(e){
-                const a = e.target.closest('a');
-                if(!a) return;
-                const href = a.getAttribute('href');
-                if(!href) return;
-                if(a.target === '_blank' || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-                if(href.startsWith('#')) return;
-                if(href.endsWith('.html') || href.indexOf('/') === 0){
-                    e.preventDefault();
-                    loadIntoMain(href);
-                }
-            });
-
-            window.addEventListener('popstate', function(e){
-                if(e.state && e.state.url){ loadIntoMain(e.state.url, false); }
-                else { location.reload(); }
-            });
-        })();
-    </script>
-
+    <script src="network-background.js" defer></script>
+    <script src="menu.js" defer></script>
 </body>
 </html>

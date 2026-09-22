@@ -1,19 +1,38 @@
 (function () {
   function initializeMenu() {
     const menuToggle = document.getElementById('mobile-menu');
-    const menuNav = document.querySelector('nav');
-    const menu = menuNav?.querySelector('.menu');
+    const menuNav = menuToggle?.closest('nav');
+    const menu = menuNav?.querySelector('ul.menu');
     if (!menuToggle || !menuNav || !menu || menuToggle.dataset.ready === 'true') return;
 
     menuToggle.dataset.ready = 'true';
     menuToggle.setAttribute('role', 'button');
     menuToggle.setAttribute('tabindex', '0');
+    menuToggle.setAttribute('aria-controls', menu.id || 'primary-menu');
+    if (!menu.id) menu.id = 'primary-menu';
+    menu.setAttribute('aria-hidden', 'true');
+
+    const closeMenu = () => {
+      menu.classList.remove('active');
+      menuToggle.classList.remove('active');
+      document.body.classList.remove('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menú');
+      menu.setAttribute('aria-hidden', 'true');
+    };
 
     const toggleMenu = () => {
-      const isOpen = menu.classList.toggle('active');
-      menuToggle.classList.toggle('active', isOpen);
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
-      menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+      const isOpen = !menu.classList.contains('active');
+      if (isOpen) {
+        menu.classList.add('active');
+        menuToggle.classList.add('active');
+        document.body.classList.add('menu-open');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', 'Cerrar menú');
+        menu.setAttribute('aria-hidden', 'false');
+      } else {
+        closeMenu();
+      }
     };
 
     menuToggle.addEventListener('click', toggleMenu);
@@ -24,59 +43,43 @@
       }
     });
 
-    menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('active');
-        menuToggle.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Abrir menú');
-      });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.classList.contains('active')) {
+        closeMenu();
+        menuToggle.focus();
+      }
     });
-  }
 
-  function initializeFloatingActions() {
-    document.querySelectorAll('.redes-flotantes').forEach((panel) => {
-      const trigger = panel.querySelector('.social-trigger');
-      if (!trigger || trigger.dataset.ready === 'true') return;
-
-      trigger.dataset.ready = 'true';
-      trigger.addEventListener('click', () => {
-        const isOpen = panel.classList.toggle('is-open');
-        trigger.setAttribute('aria-expanded', String(isOpen));
-        trigger.setAttribute('aria-label', isOpen ? 'Cerrar redes sociales' : 'Abrir redes sociales');
-      });
+    document.addEventListener('click', (event) => {
+      if (menu.classList.contains('active') && !menuNav.contains(event.target)) closeMenu();
     });
-  }
 
-  function initializePointerEffects() {
-    const cursor = document.querySelector('.cursor-rayo');
-    if (!cursor || cursor.dataset.ready === 'true') return;
-
-    cursor.dataset.ready = 'true';
-    const colors = {
-      dark: ['#00d9ff', '#00d9ff'],
-      light: ['#0f6fff', '#6ea7ff'],
-      retro: ['#ffbf3f', '#ffd985']
-    };
-    let frame = 0;
-
-    const updatePointerTheme = () => {
-      const theme = document.body.dataset.theme || 'dark';
-      const [color, glow] = colors[theme] || colors.dark;
-      cursor.style.background = color;
-      cursor.style.boxShadow = `0 0 15px ${glow}, 0 0 30px ${glow}`;
-    };
-
-    window.updatePointerTheme = updatePointerTheme;
-    document.addEventListener('mousemove', (event) => {
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        cursor.style.left = `${event.clientX}px`;
-        cursor.style.top = `${event.clientY}px`;
-        frame = 0;
-      });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 620 && menu.classList.contains('active')) closeMenu();
     }, { passive: true });
-    updatePointerTheme();
+
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  }
+
+  function initializeTechControls() {
+    const backgroundButton = document.querySelector('.tech-theme');
+    if (!backgroundButton || !window.drtechBackground) return;
+
+    const updateLabel = () => {
+      const current = window.drtechBackground.modeNames[window.drtechBackground.getMode()];
+      backgroundButton.setAttribute('aria-label', `Cambiar fondo. Actual: ${current}`);
+      backgroundButton.title = current;
+    };
+
+    backgroundButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modes = window.drtechBackground.modes;
+      const currentIndex = modes.indexOf(window.drtechBackground.getMode());
+      window.drtechBackground.setMode(modes[(currentIndex + 1) % modes.length]);
+      updateLabel();
+    });
+    document.addEventListener('drtech:background-change', updateLabel);
+    updateLabel();
   }
 
   function initializeScrollAnimations() {
@@ -97,30 +100,21 @@
   }
 
   window.toggleModo = function () {
-    const themes = ['dark', 'light', 'retro'];
-    const current = document.body.dataset.theme || 'dark';
-    const next = themes[(themes.indexOf(current) + 1) % themes.length];
-    document.body.dataset.theme = next;
-    localStorage.setItem('tema', next);
-    window.updatePointerTheme?.();
+    if (!window.drtechBackground) return;
+    const modes = window.drtechBackground.modes;
+    const currentIndex = modes.indexOf(window.drtechBackground.getMode());
+    window.drtechBackground.setMode(modes[(currentIndex + 1) % modes.length]);
   };
 
   const savedTheme = localStorage.getItem('tema');
-  if (savedTheme && ['dark', 'light', 'retro'].includes(savedTheme)) {
-    document.body.dataset.theme = savedTheme;
-  }
+  if (savedTheme && ['dark', 'light', 'retro'].includes(savedTheme)) document.body.dataset.theme = savedTheme;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      initializeMenu();
-      initializeFloatingActions();
-      initializePointerEffects();
-      initializeScrollAnimations();
-    }, { once: true });
-  } else {
+  function start() {
     initializeMenu();
-    initializeFloatingActions();
-    initializePointerEffects();
+    initializeTechControls();
     initializeScrollAnimations();
   }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
+  else start();
 })();

@@ -8,152 +8,82 @@
     
     <!-- El ID "estilo-principal" permite que JavaScript identifique qué archivo cambiar -->
     <link id="estilo-principal" rel="stylesheet" href="style.css">
-    
-    <style>
-        /* ==========================================
-           EFECTO DEL CURSOR Y PARTÍCULAS
-           ========================================== */
-        body {
-            overflow-x: hidden;
-        }
-        
-        .cursor-rayo {
-            width: 10px;
-            height: 10px;
-            background: #00d9ff;
-            border-radius: 50%;
-            position: fixed;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            box-shadow: 0 0 15px #00d9ff;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-        }
-
-        .particula {
-            width: 6px;
-            height: 6px;
-            background: #00d9ff;
-            border-radius: 50%;
-            position: fixed;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            box-shadow: 0 0 10px #00d9ff;
-            z-index: 9998;
-            animation: desvanecer 0.6s linear forwards;
-        }
-
-        @keyframes desvanecer {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
-        }
-
-        .experiencia-lista li {
-            margin: 12px 0;
-            font-size: 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 8px;
-            color: #e0e0e0;
-        }
-        
-        .experiencia-lista li::before {
-            content: "✔";
-            color: #00d9ff;
-            margin-right: 10px;
-        }
-
-        .contenedor-experiencia {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-    </style>
+    <script src="network-background.js" defer></script>
 </head>
 
-<body data-theme="dark" class="background-animated">
+<body data-theme="dark" class="background-animated tech-landing">
 
-   <header>
-    <!-- Logo normal en la principal -->
-    <a href="index.html">
-        <img src="logo.svg" alt="DR Tech Logo" class="logo">
-    </a>
-    <h1 class="titulo-principal">DR Tech Solutions</h1>
-    <p class="subtitulo">Técnico de soporte informático especializado en soluciones tecnológicas</p>
-     
-    <nav aria-label="Menú principal">
-        <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="menu">
-            <li><a href="index.html#acerca">Perfil</a></li>
-            <li><a href="Mi Experiencia.html">Mi Experiencia</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="cita.html#agendar">Agendar Cita</a></li>
-            <li class="menu-social-actions" aria-label="Accesos rápidos">
-                <button type="button" class="btn-flotante btn-modo" onclick="toggleModo()" data-tooltip="Cambiar tema" aria-label="Cambiar tema">🌓</button>
-                <a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-whatsapp" data-tooltip="WhatsApp" aria-label="Contactar por WhatsApp">💬</a>
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-instagram" data-tooltip="Instagram" aria-label="Visitar Instagram">◎</a>
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="btn-flotante btn-facebook" data-tooltip="Facebook" aria-label="Visitar Facebook">f</a>
-            </li>
-        </ul>
-    </nav>
-    <script src="menu.js" defer></script>
-    
-</header>
+   <header class="tech-header">
+    <a class="tech-brand" href="index.html" aria-label="DR Tech Solutions, inicio"><img src="logo.svg" alt="" width="46" height="46"><span>DR<span>TECH</span></span></a>
+    <nav class="tech-nav" aria-label="Navegación principal"><button type="button" class="menu-toggle tech-menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button><ul class="menu tech-menu"><li><a href="index.html">Inicio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="Mi Experiencia.html" class="active">Experiencia</a></li><li><a href="index.html#faq">FAQ</a></li><li><a class="tech-nav-cta" href="cita.html#agendar">Agendar cita <span aria-hidden="true">↗</span></a></li><li><a href="juego.html">Juegos</a></li><li class="tech-social-actions"><button type="button" class="tech-theme" aria-label="Cambiar fondo">◐</button><a href="https://wa.me/18096682092" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎</a><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a></li></ul></nav>
+   </header>
+   <script src="menu.js" defer></script>
 
-    <main class="contenedor-experiencia">
-
-        <!-- Sección de Formación -->
-        <section class="seccion-base tarjeta-servicio" style="width: 100%; text-align: left; margin-bottom: 30px;">
-            <h2 style="color: #00d9ff; margin-bottom: 15px;">Formación y Especialidad</h2>
-            <p>
-                Actualmente curso la carrera de <strong>Ingeniería en Sistemas</strong> en la <strong>Universidad Dominicana O&M (Sede Central)</strong>. Mi enfoque académico se complementa con habilidades técnicas avanzadas en <strong>desarrollo de páginas web</strong> y <strong>configuración de redes básicas</strong>. Esta combinación me permite comprender y optimizar desde la infraestructura física de una red hasta el software y la presencia digital de un negocio.
-            </p>
+    <main class="experience-page">
+        <section class="experience-intro" aria-labelledby="experience-title">
+            <div class="experience-intro-copy">
+                <span class="tech-eyebrow">PERFIL / EXPERIENCIA</span>
+                <h1 id="experience-title">Tecnología que <em>resuelve</em> problemas reales.</h1>
+                <p class="experience-lead">Soy estudiante de Ingeniería en Sistemas y técnico en formación continua. Convierto fallas confusas en soluciones claras, funcionales y fáciles de mantener.</p>
+                <div class="experience-actions">
+                    <a class="tech-button tech-button-primary" href="cita.html#agendar">Hablemos de tu proyecto <span aria-hidden="true">↗</span></a>
+                    <a class="tech-button tech-button-secondary" href="#capacidades">Ver capacidades</a>
+                </div>
+            </div>
+            <div class="experience-signal" aria-label="Resumen profesional">
+                <div class="signal-orbit signal-orbit-one"></div>
+                <div class="signal-orbit signal-orbit-two"></div>
+                <div class="signal-core"><span>DR</span><small>TECH</small></div>
+                <div class="signal-tag signal-tag-top">SISTEMAS</div>
+                <div class="signal-tag signal-tag-bottom">SOPORTE + WEB</div>
+            </div>
         </section>
 
-        <!-- Sección de Experiencia -->
-        <section class="seccion-base tarjeta-servicio" style="width: 100%; text-align: left; margin-bottom: 30px;">
-            <h2 style="color: #00d9ff; margin-bottom: 15px;">Experiencia Laboral</h2>
-            <p>
-                Cuento con <strong>2 años de experiencia profesional</strong> brindando asistencia técnica, resolviendo problemas de hardware, software y optimizando redes.
-            </p>
-            <ul class="experiencia-lista" style="list-style: none; padding: 0; margin-top: 15px;">
-                <li>Diagnóstico y reparación avanzada de equipos informáticos</li>
-                <li>Instalación y configuración optimizada de sistemas operativos</li>
-                <li>Mantenimiento preventivo y correctivo de computadoras</li>
-                <li>Soporte remoto a usuarios empresariales y residenciales</li>
-                <li>Solución de problemas de conectividad y administración de redes locales</li>
-            </ul>
+        <section class="experience-stats" aria-label="Resumen de experiencia">
+            <div><strong>+2</strong><span>Años de experiencia técnica</span></div>
+            <div><strong>5</strong><span>Áreas de soporte práctico</span></div>
+            <div><strong>24/7</strong><span>Mentalidad de resolución</span></div>
+            <div><strong>1:1</strong><span>Atención clara y personalizada</span></div>
         </section>
 
-        <!-- Sección de Fortalezas -->
-        <section class="seccion-base tarjeta-servicio" style="width: 100%; text-align: left; margin-bottom: 30px;">
-            <h2 style="color: #00d9ff; margin-bottom: 15px;">Mis Fortalezas como Informático</h2>
-            <ul class="experiencia-lista" style="list-style: none; padding: 0;">
-                <li>Capacidad para analizar y solucionar problemas rápidamente bajo presión</li>
-                <li>Facilidad para aprender e implementar nuevas tecnologías</li>
-                <li>Comunicación clara para explicar soluciones técnicas complejas a usuarios sin conocimientos previos</li>
-                <li>Responsabilidad y compromiso absoluto con la seguridad de los datos del cliente</li>
-            </ul>
+        <section id="capacidades" class="experience-section">
+            <div class="experience-section-heading">
+                <div><span class="tech-eyebrow">LO QUE PUEDO HACER</span><h2>Una base técnica amplia, aplicada con criterio.</h2></div>
+                <p>Trabajo desde el diagnóstico hasta la explicación final, cuidando el equipo, los datos y la experiencia de cada persona.</p>
+            </div>
+            <div class="capability-grid">
+                <article class="capability-card"><span class="capability-index">01</span><span class="capability-icon">⌁</span><h3>Diagnóstico y reparación</h3><p>Identifico fallas de hardware y software para recuperar el funcionamiento y evitar soluciones improvisadas.</p><button class="capability-trigger" type="button" aria-expanded="false">Ver enfoque <span>+</span></button><div class="capability-detail">Revisión de síntomas, pruebas por componente y una recomendación comprensible antes de intervenir.</div></article>
+                <article class="capability-card"><span class="capability-index">02</span><span class="capability-icon">◫</span><h3>Sistemas operativos</h3><p>Instalo, configuro y optimizo sistemas para que el equipo sea estable, seguro y práctico en el día a día.</p><button class="capability-trigger" type="button" aria-expanded="false">Ver enfoque <span>+</span></button><div class="capability-detail">Preparación del equipo, configuración inicial, mantenimiento y orientación para el usuario.</div></article>
+                <article class="capability-card"><span class="capability-index">03</span><span class="capability-icon">⌘</span><h3>Redes y conectividad</h3><p>Resuelvo problemas de conexión y apoyo la configuración de redes locales para hogares y pequeños negocios.</p><button class="capability-trigger" type="button" aria-expanded="false">Ver enfoque <span>+</span></button><div class="capability-detail">Revisión de dispositivos, conectividad, configuración básica y búsqueda ordenada del punto de falla.</div></article>
+                <article class="capability-card"><span class="capability-index">04</span><span class="capability-icon">&lt;/&gt;</span><h3>Desarrollo web</h3><p>Creo y mejoro páginas web con una mirada técnica, visual y orientada a los objetivos de cada proyecto.</p><button class="capability-trigger" type="button" aria-expanded="false">Ver enfoque <span>+</span></button><div class="capability-detail">Estructura clara, diseño responsive, interacción y una presencia digital que comunica mejor.</div></article>
+            </div>
         </section>
 
-        <!-- Sección de Llamado a la Acción -->
-        <section class="seccion-base tarjeta-servicio" style="width: 100%; text-align: center; margin-bottom: 30px;">
-            <h2 style="color: #00d9ff; margin-bottom: 15px;">¿Necesitas Soporte Técnico?</h2>
-            <p style="margin-bottom: 25px;">Estoy disponible para ayudarte con problemas técnicos, mantenimiento y configuración de equipos.</p>
-            
-            <a class="boton whatsapp" href="https://wa.me/18096682092?text=Hola,%20necesito%20soporte%20informático" target="_blank" style="margin-right: 15px;">
-                📲 Contactarme por WhatsApp
-            </a>
-            
-            <a class="boton" href="index.html" style="border: 2px solid #555; color: #fff; background: transparent;">
-                ⬅ Volver al inicio
-            </a>
+        <section class="experience-split">
+            <div class="journey-panel">
+                <span class="tech-eyebrow">MI RECORRIDO</span>
+                <h2>Aprender, probar, mejorar.</h2>
+                <div class="journey-timeline">
+                    <div class="journey-step"><span>01</span><div><strong>Formación actual</strong><p>Ingeniería en Sistemas en la Universidad Dominicana O&M, Sede Central.</p></div></div>
+                    <div class="journey-step"><span>02</span><div><strong>Experiencia práctica</strong><p>Dos años brindando asistencia técnica a usuarios residenciales y empresariales.</p></div></div>
+                    <div class="journey-step"><span>03</span><div><strong>Aprendizaje continuo</strong><p>Exploro nuevas tecnologías y las convierto en soluciones útiles, no solo en teoría.</p></div></div>
+                </div>
+            </div>
+            <div class="principles-panel">
+                <span class="tech-eyebrow">CÓMO TRABAJO</span>
+                <h2>Lo técnico también debe sentirse humano.</h2>
+                <div class="principle-list">
+                    <button class="principle-item" type="button" aria-expanded="true"><span>01</span><strong>Escucho antes de actuar</strong><b>−</b><p>Entiendo el contexto y el impacto del problema antes de proponer una intervención.</p></button>
+                    <button class="principle-item" type="button" aria-expanded="false"><span>02</span><strong>Explico sin complicar</strong><b>+</b><p>Comunico cada solución con palabras claras, incluso cuando el problema es complejo.</p></button>
+                    <button class="principle-item" type="button" aria-expanded="false"><span>03</span><strong>Cuido la información</strong><b>+</b><p>Trabajo con responsabilidad y atención a la seguridad de los datos del cliente.</p></button>
+                </div>
+            </div>
         </section>
 
+        <section class="experience-cta">
+            <div><span class="tech-eyebrow">¿TIENES UN RETO?</span><h2>Hagamos que tu tecnología vuelva a avanzar.</h2><p>Cuéntame qué está pasando y te ayudaré a encontrar el siguiente paso más claro.</p></div>
+            <a class="tech-button tech-button-primary" href="https://wa.me/18096682092?text=Hola,%20necesito%20soporte%20inform%C3%A1tico" target="_blank" rel="noopener noreferrer">Contactarme por WhatsApp <span aria-hidden="true">↗</span></a>
+        </section>
     </main>
 
     <footer>
@@ -166,22 +96,26 @@
     </footer>
 
     <script>
-        const themeColors = {
-            dark: { cursor: '#00d9ff', glow: '#00d9ff', particle: '#7ce8ff' },
-            light: { cursor: '#0f6fff', glow: '#6ea7ff', particle: '#a7c8ff' },
-            retro: { cursor: '#ffbf3f', glow: '#ffd985', particle: '#ffe7a9' }
-        };
+        document.querySelectorAll('.capability-trigger').forEach((trigger) => {
+            trigger.addEventListener('click', () => {
+                const card = trigger.closest('.capability-card');
+                const isOpen = card.classList.toggle('is-open');
+                trigger.setAttribute('aria-expanded', String(isOpen));
+                trigger.querySelector('span').textContent = isOpen ? '−' : '+';
+            });
+        });
 
-        const cursor = document.createElement("div");
-        cursor.className = "cursor-rayo";
-        document.body.appendChild(cursor);
-
-        function updateCursorTheme() {
-            const theme = document.body.getAttribute('data-theme') || localStorage.getItem('tema') || 'dark';
-            const colors = themeColors[theme] || themeColors.dark;
-            cursor.style.background = colors.cursor;
-            cursor.style.boxShadow = `0 0 15px ${colors.glow}, 0 0 30px ${colors.glow}`;
-        }
+        document.querySelectorAll('.principle-item').forEach((item) => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.principle-item').forEach((otherItem) => {
+                    const isCurrent = otherItem === item;
+                    otherItem.classList.toggle('is-open', isCurrent && otherItem.getAttribute('aria-expanded') !== 'true');
+                    otherItem.setAttribute('aria-expanded', String(isCurrent && otherItem.getAttribute('aria-expanded') !== 'true'));
+                    otherItem.querySelector('b').textContent = otherItem.classList.contains('is-open') ? '−' : '+';
+                });
+            });
+        });
     </script>
+
 </body>
 </html>
