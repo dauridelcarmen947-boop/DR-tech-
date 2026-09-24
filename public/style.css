@@ -116,6 +116,23 @@ body.background-animated::after {
     z-index: -1;
 }
 
+body.background-animated::before,
+.tech-landing::before {
+    background-size: 180px 180px, 240px 240px, auto;
+}
+
+.tech-landing::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: .55;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 119px, rgba(97, 216, 255, .035) 120px), repeating-linear-gradient(0deg, transparent 0, transparent 119px, rgba(97, 216, 255, .025) 120px);
+    mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+    animation: gridDrift 24s linear infinite;
+}
+
 @keyframes pulseBackground {
     0% { transform: scale(1); opacity: 0.7; }
     100% { transform: scale(1.12); opacity: 1; }
@@ -127,7 +144,12 @@ body.background-animated::after {
     100% { transform: translateX(-15%) rotate(10deg); }
 }
 
-@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+@keyframes gridDrift {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(120px, 120px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
@@ -1325,7 +1347,7 @@ footer {
     margin-top: 70px;
     padding: 42px max(20px, 5vw) 20px;
     color: var(--text-color);
-    background: linear-gradient(180deg, rgba(5, 12, 23, 0.98), var(--footer-bg));
+    background: linear-gradient(180deg, rgba(5, 12, 23, 0.78), rgba(5, 11, 18, 0.9));
     border-top: 1px solid rgba(124, 232, 255, 0.3);
     box-shadow: 0 -12px 35px rgba(0, 0, 0, 0.16);
 }
@@ -1336,6 +1358,8 @@ footer {
     gap: 32px;
     width: min(1100px, 100%);
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-brand,
@@ -1350,6 +1374,7 @@ footer {
 .footer-brand strong {
     color: var(--accent-color);
     font-size: 1.15rem;
+    text-shadow: 0 0 18px rgba(97, 216, 255, .45);
 }
 
 .footer-brand span,
@@ -1364,7 +1389,7 @@ footer {
     color: var(--text-color);
     text-decoration: none;
     font-size: 0.92rem;
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
 }
 
 .footer-nav a:hover,
@@ -1373,6 +1398,7 @@ footer {
 .footer-socials a:focus-visible {
     color: var(--accent-color);
     transform: translateX(3px);
+    text-shadow: 0 0 14px rgba(97, 216, 255, .6);
 }
 
 .footer-bottom {

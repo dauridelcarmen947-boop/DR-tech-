@@ -26,7 +26,7 @@
     canvas.width = Math.floor(width * ratio); canvas.height = Math.floor(height * ratio);
     canvas.style.width = `${width}px`; canvas.style.height = `${height}px`; context.setTransform(ratio, 0, 0, ratio, 0, 0);
     const count = Math.min(width < 768 ? 34 : 54, Math.max(18, Math.round((width * height) / 22000)));
-    nodes = Array.from({ length: count }, () => ({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.2, radius: Math.random() * 1.5 + 0.8 }));
+    nodes = Array.from({ length: count }, () => ({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.42, vy: (Math.random() - 0.5) * 0.42, radius: Math.random() * 1.8 + 0.8, phase: Math.random() * Math.PI * 2 }));
     drops = Array.from({ length: Math.min(90, Math.max(35, Math.round(width / 13))) }, () => ({ x: Math.random() * width, y: Math.random() * height, speed: Math.random() * 1.8 + 0.7, length: Math.random() * 16 + 5, char: String.fromCharCode(0x30a0 + Math.floor(Math.random() * 96)) }));
   }
 
@@ -42,9 +42,11 @@
     nodes.forEach((node) => {
       const dx = pointer.x - node.x; const dy = pointer.y - node.y; const distance = Math.hypot(dx, dy);
       if (pointer.active && distance > 0 && distance < 170) { const force = (1 - distance / 170) * (pointer.pressed ? 0.24 : 0.1); node.vx += (dx / distance) * force; node.vy += (dy / distance) * force; }
-      node.x += node.vx; node.y += node.vy; node.vx *= 0.995; node.vy *= 0.995;
+      node.x += node.vx; node.y += node.vy; node.vx *= 0.998; node.vy *= 0.998;
       if (node.x < 0 || node.x > width) node.vx *= -1; if (node.y < 0 || node.y > height) node.vy *= -1;
-      context.globalAlpha = 0.8; context.beginPath(); context.arc(node.x, node.y, node.radius, 0, Math.PI * 2); context.fill();
+      const pulse = 1 + Math.sin(performance.now() * 0.002 + node.phase) * 0.35;
+      context.globalAlpha = 0.7 + pulse * 0.12; context.beginPath(); context.arc(node.x, node.y, node.radius * pulse, 0, Math.PI * 2); context.fill();
+      context.globalAlpha = 0.16; context.beginPath(); context.arc(node.x, node.y, node.radius * 4.5 * pulse, 0, Math.PI * 2); context.fill();
     });
     for (let index = 0; index < nodes.length; index += 1) for (let next = index + 1; next < nodes.length; next += 1) {
       const first = nodes[index]; const second = nodes[next]; const distance = Math.hypot(first.x - second.x, first.y - second.y);
